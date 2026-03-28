@@ -42,8 +42,8 @@ button:disabled{opacity:0.6; cursor:not-allowed;}
 .back-btn{margin-top:25px; width:auto !important; padding:12px 35px !important; font-size:0.9rem !important; display:inline-block;}
 </style>
 </head>
-
 <body>
+
 <div class="container">
 
 <div id="formBody">
@@ -122,8 +122,8 @@ April 2026 Holiday Intake. Register for our online STEM programs. Each course of
 <label>Current Level *</label>
 <select name="intakeLevel" required>
 <option value="">Choose Enrollment Level</option>
-<option value="Level 1">Level 1 (Foundation )</option>
-<option value="Level 2">Level 2 (Intermediate )</option>
+<option value="Level 1">Level 1 (Foundation)</option>
+<option value="Level 2">Level 2 (Intermediate)</option>
 <option value="Level 3">Level 3 (Advanced Mastery)</option>
 </select>
 <div class="error">Please select your level</div>
@@ -160,7 +160,7 @@ April 2026 Holiday Intake. Register for our online STEM programs. Each course of
 </svg>
 </div>
 <h1>Registration Received!</h1>
-<p>Thank you for choosing TSI Online. We will send the Microsoft Teams invitation and the curriculum guide for your selected level to your Email.</p>
+<p>Thank you for choosing TSI Online. We will send the Microsoft Teams invitation and curriculum guide for your selected level to your Email.</p>
 <button class="back-btn" onclick="window.location.reload()">Back</button>
 </div>
 
@@ -186,39 +186,34 @@ form.addEventListener('submit', function(e){
   if(!validateForm()) return;
 
   loader.style.display='inline-block';
-  document.getElementById('btnText').style.display='none';
   submitBtn.disabled=true;
+  document.getElementById('btnText').style.display='none';
 
   const formData = new FormData(form);
 
-  const scriptURL = "https://script.google.com/macros/s/AKfycbxIzzRkTw0sn4nOrx3ySue7cMr063MMEjd4RiVUYidW27gZYQH5U1596aq_jvvPyfQNgA/exec";
-  const iframe = document.createElement('iframe');
-  iframe.name = 'hidden_iframe';
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-
-  const tempForm = document.createElement('form');
-  tempForm.action = scriptURL;
-  tempForm.method = 'POST';
-  tempForm.target = 'hidden_iframe';
-
-  for (let [key,value] of formData.entries()){
-    const input = document.createElement('input');
-    input.type='hidden';
-    input.name=key;
-    input.value=value;
-    tempForm.appendChild(input);
-  }
-
-  document.body.appendChild(tempForm);
-  tempForm.submit();
-
-  setTimeout(()=>{
+  fetch('https://script.google.com/macros/s/AKfycbyWRv7_tLiaQR4OnRuI25nvCeVwZZeDUVHFM_T97IS5DOXIkGlxcB0Z46-82jK7HEqhow/exec', {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.text())
+  .then(data => {
     loader.style.display='none';
-    form.style.display='none';
-    successScreen.style.display='block';
-  }, 1500);
-
+    if(data === "Success"){
+      form.style.display='none';
+      successScreen.style.display='block';
+    } else {
+      submitBtn.disabled=false;
+      document.getElementById('btnText').style.display='inline';
+      alert("Submission failed, try again.");
+    }
+  })
+  .catch(err => {
+    loader.style.display='none';
+    submitBtn.disabled=false;
+    document.getElementById('btnText').style.display='inline';
+    console.error(err);
+    alert("Submission failed, check console.");
+  });
 });
 </script>
 
