@@ -167,51 +167,56 @@ const submitBtn = document.getElementById('submitBtn');
 const successScreen = document.getElementById('success');
 const loader = document.getElementById('loader');
 const checkbox = document.getElementById('confirmCheck');
+const btnText = document.getElementById('btnText');
 
 function validateForm(){
-  let valid = form.checkValidity() && checkbox.checked;
+  const valid = form.checkValidity() && checkbox.checked;
   submitBtn.disabled = !valid;
   return valid;
 }
 
 form.addEventListener('input', validateForm);
+checkbox.addEventListener('change', validateForm);
 
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', async function(e){
   e.preventDefault();
   if(!validateForm()) return;
 
   loader.style.display='inline-block';
   submitBtn.disabled=true;
-  document.getElementById('btnText').style.display='none';
+  btnText.style.display='none';
 
   const formData = new FormData(form);
   const jsonData = {};
   formData.forEach((value, key) => jsonData[key] = value);
 
-  fetch('https://script.google.com/macros/s/AKfycby6hQA362wiEUrD54Ar2uaVlnjxow6Dd3jnfU37Zn8WopP1qjmXBA8JF3fXlIWSC5w9cw/exec', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(jsonData)
-  })
-  .then(res => res.text())
-  .then(data => {
+  try {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbzcyH1Lm17w7eoQsfdVRCd_yUJBCQ-z_XnVA1NsVr0fbb371khvUKwEUYwHDM3J4HPONg/exec', { 
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(jsonData),
+      mode: 'cors'
+    });
+
+    const text = await response.text();
     loader.style.display='none';
-    if(data === "Success"){
+
+    if(text === 'Success'){
       form.style.display='none';
       successScreen.style.display='block';
     } else {
       submitBtn.disabled=false;
-      document.getElementById('btnText').style.display='inline';
-      alert("Submission failed, try again.");
+      btnText.style.display='inline';
+      alert('Submission failed. Try again.');
+      console.error('Apps Script response:', text);
     }
-  })
-  .catch(err => {
+  } catch(err){
     loader.style.display='none';
     submitBtn.disabled=false;
-    document.getElementById('btnText').style.display='inline';
+    btnText.style.display='inline';
     console.error(err);
-    alert("Submission failed, check console.");
-  });
+    alert('Submission failed. Check console.');
+  }
 });
 </script>
 
