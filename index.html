@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TSI April 2026 Online Registration</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -32,62 +31,126 @@ input:focus,select:focus,textarea:focus{outline:none; border-color:var(--primary
 .radio-option{display:flex; align-items:center; gap:12px; padding:14px; background:rgba(0, 86, 179, 0.05); border-radius:12px; margin-bottom: 10px;}
 .radio-option span{color:#1a1a1a; font-size: 0.9rem;}
 .info-tag{display:inline-block; background:var(--primary); color:white; padding:4px 12px; border-radius:20px; font-size:0.75rem; margin-bottom:15px; text-transform:uppercase; font-weight:700;}
-button{width:100%; padding:18px; border:none; border-radius:16px; font-size:1.05rem; font-weight:700; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:white; cursor:pointer;}
+button{width:100%; padding:18px; border:none; border-radius:16px; font-size:1.05rem; font-weight:700; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:white; cursor:pointer; transition:0.3s;}
+button:hover:not(:disabled){transform:translateY(-3px); box-shadow:0 12px 30px rgba(0, 86, 179, 0.3);}
+button:disabled{opacity:0.6; cursor:not-allowed;}
 .loader{display:none; border:3px solid #fff; border-top:3px solid transparent; border-radius:50%; width:22px; height:22px; margin:auto; animation:spin 1s linear infinite;}
 @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-#success{display:none; text-align:center;}
-.success-icon{width:80px;height:80px;margin:auto;}
+#success{display:none; text-align:center; padding:20px 0;}
+#success p{color:#444; font-size:1.1rem; line-height:1.6;}
+.success-icon{width:80px; height:80px; margin:0 auto 10px;}
+.back-btn{margin-top:25px; width:auto !important; padding:12px 35px !important; font-size:0.9rem !important; display:inline-block;}
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
-<form id="mainForm">
+<div id="formBody">
+<div class="info-tag">Virtual Learning</div>
+<h1>Techsavanna Software Institute</h1>
 
-<input name="parentName" placeholder="Parent Name" required>
-<input name="email" type="email" placeholder="Email" required>
-<input name="phone" placeholder="Phone" required>
-<input name="studentName" placeholder="Student Name" required>
+<p class="description">
+April 2026 Holiday Intake. Register for our online STEM programs. Each course offers a comprehensive 3-level progression from beginner to advanced.
+</p>
 
+<form id="mainForm" novalidate>
+
+<section>
+<h3>Guardian & Student Info</h3>
+<div class="form-group">
+<label>Parent/Guardian Full Name *</label>
+<input type="text" name="parentName" required minlength="3">
+<div class="error">Full name required</div>
+</div>
+<div class="form-group">
+<label>Email Address *</label>
+<input type="email" name="email" required>
+<div class="error">Valid email required for confirmation</div>
+</div>
+<div class="form-group">
+<label>WhatsApp Phone Number *</label>
+<input type="tel" name="phone" required pattern="^[0-9+\- ]{8,15}$">
+<div class="error">Enter valid phone number</div>
+</div>
+<div class="form-group">
+<label>Student Name *</label>
+<input type="text" name="studentName" required>
+<div class="error">Student name required</div>
+</div>
+<div class="form-group">
+<label>Student Age Group *</label>
 <select name="ageGroup" required>
-<option value="">Age Group</option>
-<option>Ages 5-7</option>
-<option>Ages 8-12</option>
-<option>Ages 13+</option>
+<option value="">Select age</option>
+<option>Ages 5-7 (Visual Programming)</option>
+<option>Ages 8-12 (Block-Based Coding)</option>
+<option>Ages 13+ (Text-Based Programming)</option>
 </select>
+<div class="error">Select age group</div>
+</div>
+</section>
 
+<section>
+<h3>Awareness</h3>
+<div class="form-group">
+<label>How did you get to know TSI? *</label>
 <select name="referralSource" required>
-<option value="">Referral</option>
-<option>WhatsApp</option>
-<option>Social Media</option>
-<option>Friend</option>
-<option>Poster</option>
+<option value="">Select source</option>
+<option>WhatsApp Status/Group</option>
+<option>Social Media (Facebook/Instagram)</option>
+<option>Referral from a Friend</option>
+<option>Physical Poster/Flyer</option>
 <option>Other</option>
 </select>
+<div class="error">Please select an option</div>
+</div>
+</section>
 
+<section>
+<h3>Enrollment Selection</h3>
+<div class="form-group">
+<label>Select Course Path *</label>
 <select name="courseSelection" required>
-<option value="">Course</option>
-<option value="Robotics">Robotics</option>
-<option value="Web Development">Web Development</option>
+<option value="">Choose Course</option>
+<option value="Robotics">Future Engineers (Coding & Robotics)</option>
+<option value="Web Development">Coding for Kids (Web Development)</option>
 </select>
+<div class="error">Please select a course</div>
+</div>
 
+<div class="form-group">
+<label>Current Level *</label>
 <select name="intakeLevel" required>
-<option value="">Level</option>
-<option value="Level 1">Level 1</option>
-<option value="Level 2">Level 2</option>
-<option value="Level 3">Level 3</option>
+<option value="">Choose Enrollment Level</option>
+<option value="Level 1">Level 1 (Foundation )</option>
+<option value="Level 2">Level 2 (Intermediate )</option>
+<option value="Level 3">Level 3 (Advanced Mastery)</option>
 </select>
+<div class="error">Please select your level</div>
+</div>
 
-<label>
+<div class="form-group">
+<label>Learning Delivery</label>
+<input type="text" value="Online Only (Microsoft Teams)" readonly style="background: rgba(0, 86, 179, 0.08); font-weight: 600;">
+</div>
+
+</section>
+
+<section>
+<div class="radio-option">
 <input type="checkbox" id="confirmCheck" name="commitment" value="Confirmed" required>
-Confirm readiness
-</label>
+<span>I confirm that I have a computer and stable internet access for online classes.</span>
+</div>
+<div class="error" id="checkboxError">Please confirm technical readiness before submitting</div>
+</section>
 
-<button type="submit" id="submitBtn">Submit</button>
+<button type="submit" id="submitBtn" disabled>
+<span id="btnText">Submit Registration</span>
+<div class="loader" id="loader"></div>
+</button>
 
 </form>
+</div>
 
 <div id="success">
 <div class="success-icon">
@@ -96,37 +159,54 @@ Confirm readiness
 <path fill="none" stroke="#22c55e" stroke-width="4" d="M14 27l7 7 17-17"/>
 </svg>
 </div>
-<h2>Submitted Successfully</h2>
+<h1>Registration Received!</h1>
+<p>Thank you for choosing TSI Online. We will send the Microsoft Teams invitation and the curriculum guide for your selected level to your Email.</p>
+<button class="back-btn" onclick="window.location.reload()">Back</button>
 </div>
 
 </div>
 
 <script>
-const form = document.getElementById("mainForm");
-const success = document.getElementById("success");
+const form = document.getElementById('mainForm');
+const submitBtn = document.getElementById('submitBtn');
+const successScreen = document.getElementById('success');
+const loader = document.getElementById('loader');
+const checkbox = document.getElementById('confirmCheck');
 
-form.addEventListener("submit", function(e){
+function validateForm(){
+  let valid = form.checkValidity() && checkbox.checked;
+  submitBtn.disabled = !valid;
+  return valid;
+}
+
+form.addEventListener('input', validateForm);
+
+form.addEventListener('submit', function(e){
   e.preventDefault();
+  if(!validateForm()) return;
 
-  const scriptURL = "https://script.google.com/macros/s/YOUR_NEW_DEPLOYMENT_URL/exec";
+  loader.style.display='inline-block';
+  document.getElementById('btnText').style.display='none';
+  submitBtn.disabled=true;
 
   const formData = new FormData(form);
 
-  const iframe = document.createElement("iframe");
-  iframe.name = "hidden_iframe";
-  iframe.style.display = "none";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxIzzRkTw0sn4nOrx3ySue7cMr063MMEjd4RiVUYidW27gZYQH5U1596aq_jvvPyfQNgA/exec";
+  const iframe = document.createElement('iframe');
+  iframe.name = 'hidden_iframe';
+  iframe.style.display = 'none';
   document.body.appendChild(iframe);
 
-  const tempForm = document.createElement("form");
-  tempForm.method = "POST";
+  const tempForm = document.createElement('form');
   tempForm.action = scriptURL;
-  tempForm.target = "hidden_iframe";
+  tempForm.method = 'POST';
+  tempForm.target = 'hidden_iframe';
 
-  for (let pair of formData.entries()) {
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = pair[0];
-    input.value = pair[1];
+  for (let [key,value] of formData.entries()){
+    const input = document.createElement('input');
+    input.type='hidden';
+    input.name=key;
+    input.value=value;
     tempForm.appendChild(input);
   }
 
@@ -134,9 +214,11 @@ form.addEventListener("submit", function(e){
   tempForm.submit();
 
   setTimeout(()=>{
-    form.style.display="none";
-    success.style.display="block";
-  },1500);
+    loader.style.display='none';
+    form.style.display='none';
+    successScreen.style.display='block';
+  }, 1500);
+
 });
 </script>
 
