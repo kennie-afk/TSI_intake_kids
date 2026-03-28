@@ -190,10 +190,15 @@ form.addEventListener('submit', function(e){
   document.getElementById('btnText').style.display='none';
 
   const formData = new FormData(form);
+  const jsonData = {};
+  formData.forEach((value, key) => jsonData[key] = value);
 
-  fetch('https://script.google.com/macros/s/AKfycbyWRv7_tLiaQR4OnRuI25nvCeVwZZeDUVHFM_T97IS5DOXIkGlxcB0Z46-82jK7HEqhow/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbwqwz3KmfA6hV21W3MsvS9khrAuZiIGrBU57kuPn-CGxYBpP6NDlCsNxpywbFD_MXwXbA/exec', {
     method: 'POST',
-    body: formData
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(jsonData)
   })
   .then(res => res.text())
   .then(data => {
