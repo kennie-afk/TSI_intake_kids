@@ -8,13 +8,8 @@
 
 <style>
 :root{
-  --primary:#0056b3; 
-  --secondary:#ff4500; 
-  --success:#22c55e; 
-  --danger:#ef4444;
-  --bg:#ffffff; 
-  --glass:rgba(0, 86, 179, 0.03); 
-  --border:rgba(0, 86, 179, 0.12);
+  --primary:#0056b3; --secondary:#ff4500; --success:#22c55e; --danger:#ef4444;
+  --bg:#ffffff; --glass:rgba(0, 86, 179, 0.03); --border:rgba(0, 86, 179, 0.12);
 }
 *{box-sizing:border-box;}
 body{margin:0; font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:#1a1a1a; padding:40px 15px;}
@@ -193,11 +188,9 @@ form.addEventListener('submit', function(e){
   const jsonData = {};
   formData.forEach((value, key) => jsonData[key] = value);
 
-  fetch('https://script.google.com/macros/s/AKfycbwqwz3KmfA6hV21W3MsvS9khrAuZiIGrBU57kuPn-CGxYBpP6NDlCsNxpywbFD_MXwXbA/exec', {
+  fetch('https://script.google.com/macros/s/AKfycby6hQA362wiEUrD54Ar2uaVlnjxow6Dd3jnfU37Zn8WopP1qjmXBA8JF3fXlIWSC5w9cw/exec', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(jsonData)
   })
   .then(res => res.text())
