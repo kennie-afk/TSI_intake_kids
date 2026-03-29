@@ -167,6 +167,13 @@ button:disabled{
   margin-top:25px;
   padding:12px 35px;
 }
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top:5px;
+  display:block;
+}
 </style>
 </head>
 
@@ -190,32 +197,37 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 
 <div class="form-group">
 <label><i data-lucide="user"></i> Parent Name</label>
-<input type="text" name="parentName" required>
+<input type="text" name="parentName" id="parentName">
+<span class="error-message" id="parentNameError"></span>
 </div>
 
 <div class="form-group">
 <label><i data-lucide="mail"></i> Email</label>
-<input type="email" name="email" required>
+<input type="email" name="email" id="email">
+<span class="error-message" id="emailError"></span>
 </div>
 
 <div class="form-group">
 <label><i data-lucide="phone"></i> WhatsApp</label>
-<input type="tel" name="phone" required>
+<input type="tel" name="phone" id="phone">
+<span class="error-message" id="phoneError"></span>
 </div>
 
 <div class="form-group">
 <label><i data-lucide="user"></i> Student Name</label>
-<input type="text" name="studentName" required>
+<input type="text" name="studentName" id="studentName">
+<span class="error-message" id="studentNameError"></span>
 </div>
 
 <div class="form-group">
 <label><i data-lucide="users"></i> Age Group</label>
-<select name="ageGroup" required>
+<select name="ageGroup" id="ageGroup">
 <option value="">Select</option>
 <option>Ages 5-7</option>
 <option>Ages 8-12</option>
 <option>Ages 13+</option>
 </select>
+<span class="error-message" id="ageGroupError"></span>
 </div>
 </section>
 
@@ -225,7 +237,7 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 
 <div class="form-group">
 <label><i data-lucide="users"></i> How did you hear about TSI?</label>
-<select name="referralSource" required>
+<select name="referralSource" id="referralSource">
   <option value="">Select source</option>
   <option>WhatsApp Status/Group</option>
   <option>Social Media (Facebook/Instagram)</option>
@@ -233,6 +245,7 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
   <option>Physical Poster/Flyer</option>
   <option>Other</option>
 </select>
+<span class="error-message" id="referralSourceError"></span>
 </div>
 </section>
 
@@ -242,29 +255,31 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 
 <div class="form-group">
 <label><i data-lucide="book-open"></i> Course</label>
-<select name="courseSelection" required>
+<select name="courseSelection" id="courseSelection">
 <option value="">Choose</option>
 <option>Coding for Kids</option>
 <option>Robotics</option>
 <option>Web Development for Juniors</option>
 </select>
+<span class="error-message" id="courseSelectionError"></span>
 </div>
 
 <div class="form-group">
 <label><i data-lucide="layers"></i> Level</label>
-<select name="intakeLevel" required>
+<select name="intakeLevel" id="intakeLevel">
 <option value="">Select</option>
 <option>Level 1</option>
 <option>Level 2</option>
 <option>Level 3</option>
 </select>
+<span class="error-message" id="intakeLevelError"></span>
 </div>
 </section>
 
 <!-- Technical Confirmation -->
 <section>
 <div class="radio-option">
-<input type="checkbox" name="commitment" required>
+<input type="checkbox" name="commitment" id="commitment">
 <span>I confirm I have a computer and stable internet.</span>
 </div>
 </section>
@@ -326,6 +341,71 @@ const btnText = document.getElementById('btnText');
 
 form.addEventListener('submit', async function(e){
   e.preventDefault();
+
+  // Clear previous errors
+  document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
+
+  let valid = true;
+
+  // Parent Name
+  if(!form.parentName.value.trim()){
+    document.getElementById('parentNameError').textContent = "Parent Name is required";
+    valid = false;
+  }
+
+  // Email
+  const emailVal = form.email.value.trim();
+  if(!emailVal){
+    document.getElementById('emailError').textContent = "Email is required";
+    valid = false;
+  } else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)){
+    document.getElementById('emailError').textContent = "Enter a valid email";
+    valid = false;
+  }
+
+  // Phone
+  if(!form.phone.value.trim()){
+    document.getElementById('phoneError').textContent = "Phone number is required";
+    valid = false;
+  }
+
+  // Student Name
+  if(!form.studentName.value.trim()){
+    document.getElementById('studentNameError').textContent = "Student Name is required";
+    valid = false;
+  }
+
+  // Age Group
+  if(!form.ageGroup.value){
+    document.getElementById('ageGroupError').textContent = "Select an Age Group";
+    valid = false;
+  }
+
+  // Referral Source
+  if(!form.referralSource.value){
+    document.getElementById('referralSourceError').textContent = "Select a source";
+    valid = false;
+  }
+
+  // Course
+  if(!form.courseSelection.value){
+    document.getElementById('courseSelectionError').textContent = "Select a Course";
+    valid = false;
+  }
+
+  // Level
+  if(!form.intakeLevel.value){
+    document.getElementById('intakeLevelError').textContent = "Select a Level";
+    valid = false;
+  }
+
+  // Commitment Checkbox
+  if(!form.commitment.checked){
+    alert("You must confirm you have a computer and stable internet.");
+    valid = false;
+  }
+
+  if(!valid) return;
 
   loader.style.display='inline-block';
   btnText.style.display='none';
