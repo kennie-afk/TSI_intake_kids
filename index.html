@@ -170,20 +170,6 @@ button:disabled{
   margin-top:25px;
   padding:12px 35px;
 }
-
-/* Country code + phone container */
-.phone-container {
-  display: flex;
-  gap: 8px;
-}
-
-.phone-container .iti {
-  width: 35%;
-}
-
-.phone-container input[type="tel"] {
-  width: 65%;
-}
 </style>
 </head>
 
@@ -217,10 +203,7 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 
 <div class="form-group">
 <label><i data-lucide="phone"></i> WhatsApp / Phone</label>
-<div class="phone-container">
-  <input id="phoneCode" type="tel">
-  <input type="tel" id="phoneNumber" name="phone" placeholder="Enter number" required>
-</div>
+<input type="tel" id="phone" name="phone" required>
 </div>
 
 <div class="form-group">
@@ -342,7 +325,7 @@ Contact: <strong>info@tsi.ac.ke</strong>
 <script>
 lucide.createIcons();
 
-const phoneInput = document.querySelector("#phoneCode");
+const phoneInput = document.querySelector("#phone");
 const iti = window.intlTelInput(phoneInput, {
   initialCountry: "ke",
   separateDialCode: true,
@@ -359,14 +342,10 @@ form.addEventListener('submit', async function(e){
   loader.style.display='inline-block';
   btnText.style.display='none';
 
-  
-  const countryCode = iti.getSelectedCountryData().dialCode;
-  const localNumber = document.getElementById('phoneNumber').value.trim();
-  const fullNumber = `+${countryCode}${localNumber}`;
+  const fullNumber = iti.getNumber();
 
-  
   const formData = new FormData(form);
-  formData.set('phone', fullNumber);
+  formData.set('phone', fullNumber); // override phone
   const data = new URLSearchParams(formData);
 
   const res = await fetch('https://script.google.com/macros/s/AKfycbxW4y1PtT-H5fburdEJTxsaA25SVw_XOtu6UkBWwuSERs_0UxUuOQnN1Qa-JYqW8XUcug/exec', {
