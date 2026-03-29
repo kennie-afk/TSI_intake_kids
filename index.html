@@ -141,7 +141,7 @@ button:disabled{
   100%{transform:rotate(360deg);}
 }
 
-/* SUCCESS UI */
+
 #success{display:none;text-align:center;}
 
 .success-icon{
@@ -316,7 +316,7 @@ form.addEventListener('submit', async function(e){
   const formData = new FormData(form);
   const data = new URLSearchParams(formData);
 
-  const res = await fetch('YOUR_SCRIPT_URL', {
+  const res = await fetch('https://script.google.com/macros/s/AKfycbx_lyi2Olr-_vacttTv0APbEizYbd0ewy2Om9BYki8rplV7gkHNP2NRH7N-W8rZDrzxXw/exec', {
     method:'POST',
     body:data
   });
