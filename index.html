@@ -4,142 +4,255 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TSI April 2026 Online Registration</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
 :root{
-  --primary:#0056b3; --secondary:#ff4500; --success:#22c55e; --danger:#ef4444;
-  --bg:#ffffff; --glass:rgba(0, 86, 179, 0.03); --border:rgba(0, 86, 179, 0.12);
+  --primary:#0056b3;
+  --secondary:#ff4500;
+  --success:#22c55e;
+  --danger:#ef4444;
+  --bg:#ffffff;
+  --glass:rgba(0, 86, 179, 0.03);
+  --border:rgba(0, 86, 179, 0.12);
 }
+
 *{box-sizing:border-box;}
-body{margin:0; font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:#1a1a1a; padding:40px 15px;}
-.container{max-width:800px; margin:auto; padding:50px; border-radius:28px; background:var(--glass); backdrop-filter:blur(25px); border:1px solid var(--border); box-shadow:0 30px 70px rgba(0,0,0,0.05);}
-h1{font-size:2.6rem; margin-bottom:12px; background:linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
-.description{color:#444; margin-bottom:40px; border-bottom:1px solid var(--border); padding-bottom:25px; font-weight: 500;}
+
+body{
+  margin:0;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);
+  color:#1a1a1a;
+  padding:40px 15px;
+}
+
+.container{
+  max-width:800px;
+  margin:auto;
+  padding:50px;
+  border-radius:28px;
+  background:var(--glass);
+  backdrop-filter:blur(25px);
+  border:1px solid var(--border);
+  box-shadow:0 30px 70px rgba(0,0,0,0.05);
+}
+
+h1{
+  font-size:2.6rem;
+  margin-bottom:12px;
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.description{
+  color:#444;
+  margin-bottom:40px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:25px;
+  font-weight:500;
+}
+
 section{margin-bottom:40px;}
-h3{font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; color:var(--primary); margin-bottom:20px; font-weight: 700;}
+
+h3{
+  font-size:0.85rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:var(--primary);
+  margin-bottom:20px;
+  font-weight:700;
+}
+
 .form-group{margin-bottom:22px;}
-label{display:block; font-size:0.85rem; margin-bottom:8px; color:#1a1a1a; font-weight: 600;}
-input,select,textarea{width:100%; padding:15px; border-radius:14px; border:1px solid var(--border); background:rgba(255,255,255,0.8); color:#1a1a1a; font-size:0.95rem; transition:0.3s;}
-input:focus,select:focus,textarea:focus{outline:none; border-color:var(--primary); background:#fff; box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1);}
-.error{font-size:0.75rem; color:var(--danger); margin-top:6px; display:none;}
-.radio-option{display:flex; align-items:center; gap:12px; padding:14px; background:rgba(0, 86, 179, 0.05); border-radius:12px; margin-bottom: 10px;}
-.radio-option span{color:#1a1a1a; font-size: 0.9rem;}
-.info-tag{display:inline-block; background:var(--primary); color:white; padding:4px 12px; border-radius:20px; font-size:0.75rem; margin-bottom:15px; text-transform:uppercase; font-weight:700;}
-button{width:100%; padding:18px; border:none; border-radius:16px; font-size:1.05rem; font-weight:700; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:white; cursor:pointer; transition:0.3s;}
-button:hover:not(:disabled){transform:translateY(-3px); box-shadow:0 12px 30px rgba(0, 86, 179, 0.3);}
-button:disabled{opacity:0.6; cursor:not-allowed;}
-.loader{display:none; border:3px solid #fff; border-top:3px solid transparent; border-radius:50%; width:22px; height:22px; margin:auto; animation:spin 1s linear infinite;}
-@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-#success{display:none; text-align:center; padding:20px 0;}
-#success p{color:#444; font-size:1.1rem; line-height:1.6;}
-.success-icon{width:80px; height:80px; margin:0 auto 10px;}
-.back-btn{margin-top:25px; width:auto !important; padding:12px 35px !important; font-size:0.9rem !important; display:inline-block;}
+
+label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:0.85rem;
+  margin-bottom:8px;
+  font-weight:600;
+}
+
+input,select{
+  width:100%;
+  padding:15px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.8);
+  font-size:0.95rem;
+  transition:0.3s;
+}
+
+input:focus,select:focus{
+  outline:none;
+  border-color:var(--primary);
+  background:#fff;
+  box-shadow:0 0 0 4px rgba(0,86,179,0.1);
+}
+
+.radio-option{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+  background:rgba(0,86,179,0.05);
+  border-radius:12px;
+}
+
+button{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:16px;
+  font-size:1.05rem;
+  font-weight:700;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover:not(:disabled){
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,86,179,0.3);
+}
+
+button:disabled{
+  opacity:0.6;
+}
+
+.loader{
+  display:none;
+  border:3px solid #fff;
+  border-top:3px solid transparent;
+  border-radius:50%;
+  width:22px;
+  height:22px;
+  margin:auto;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  100%{transform:rotate(360deg);}
+}
+
+/* SUCCESS UI */
+#success{display:none;text-align:center;}
+
+.success-icon{
+  margin-bottom:15px;
+}
+
+.info-box{
+  margin-top:20px;
+  padding:20px;
+  border-radius:14px;
+  background:rgba(0,86,179,0.05);
+  border:1px solid var(--border);
+  text-align:left;
+}
+
+.info-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.back-btn{
+  margin-top:25px;
+  padding:12px 35px;
+}
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
 <div id="formBody">
-<div class="info-tag">Virtual Learning</div>
+
 <h1>Techsavanna Software Institute</h1>
 
 <p class="description">
-April 2026 Holiday Intake. Register for our online STEM programs. Each course offers a comprehensive 3-level progression from beginner to advanced.
+April 2026 Holiday Intake. Register your child for one of our specialized online STEM programs.
 </p>
 
-<form id="mainForm" novalidate>
+<form id="mainForm">
 
 <section>
 <h3>Guardian & Student Info</h3>
+
 <div class="form-group">
-<label>Parent/Guardian Full Name *</label>
-<input type="text" name="parentName" required minlength="3">
-<div class="error">Full name required</div>
+<label><i data-lucide="user"></i> Parent Name</label>
+<input type="text" name="parentName" required>
 </div>
+
 <div class="form-group">
-<label>Email Address *</label>
+<label><i data-lucide="mail"></i> Email</label>
 <input type="email" name="email" required>
-<div class="error">Valid email required for confirmation</div>
 </div>
+
 <div class="form-group">
-<label>WhatsApp Phone Number *</label>
-<input type="tel" name="phone" required pattern="^[0-9+\- ]{8,15}$">
-<div class="error">Enter valid phone number</div>
+<label><i data-lucide="phone"></i> WhatsApp</label>
+<input type="tel" name="phone" required>
 </div>
+
 <div class="form-group">
-<label>Student Name *</label>
+<label><i data-lucide="user"></i> Student Name</label>
 <input type="text" name="studentName" required>
-<div class="error">Student name required</div>
 </div>
+
 <div class="form-group">
-<label>Student Age Group *</label>
+<label><i data-lucide="users"></i> Age Group</label>
 <select name="ageGroup" required>
-<option value="">Select age</option>
-<option>Ages 5-7 (Visual Programming)</option>
-<option>Ages 8-12 (Block-Based Coding)</option>
-<option>Ages 13+ (Text-Based Programming)</option>
+<option value="">Select</option>
+<option>Ages 5-7</option>
+<option>Ages 8-12</option>
+<option>Ages 13+</option>
 </select>
-<div class="error">Select age group</div>
 </div>
+
 </section>
 
 <section>
-<h3>Awareness</h3>
-<div class="form-group">
-<label>How did you get to know TSI? *</label>
-<select name="referralSource" required>
-<option value="">Select source</option>
-<option>WhatsApp Status/Group</option>
-<option>Social Media (Facebook/Instagram)</option>
-<option>Referral from a Friend</option>
-<option>Physical Poster/Flyer</option>
-<option>Other</option>
-</select>
-<div class="error">Please select an option</div>
-</div>
-</section>
+<h3>Enrollment</h3>
 
-<section>
-<h3>Enrollment Selection</h3>
 <div class="form-group">
-<label>Select Course Path *</label>
+<label><i data-lucide="book-open"></i> Course</label>
 <select name="courseSelection" required>
-<option value="">Choose Course</option>
-<option value="Robotics">Future Engineers (Coding & Robotics)</option>
-<option value="Web Development">Coding for Kids (Web Development)</option>
+<option value="">Choose</option>
+<option>Coding for Kids</option>
+<option>Robotics</option>
+<option>Web Development for Juniors</option>
 </select>
-<div class="error">Please select a course</div>
 </div>
 
 <div class="form-group">
-<label>Current Level *</label>
+<label><i data-lucide="layers"></i> Level</label>
 <select name="intakeLevel" required>
-<option value="">Choose Enrollment Level</option>
-<option value="Level 1">Level 1 (Foundation)</option>
-<option value="Level 2">Level 2 (Intermediate)</option>
-<option value="Level 3">Level 3 (Advanced Mastery)</option>
+<option value="">Select</option>
+<option>Level 1</option>
+<option>Level 2</option>
+<option>Level 3</option>
 </select>
-<div class="error">Please select your level</div>
-</div>
-
-<div class="form-group">
-<label>Learning Delivery</label>
-<input type="text" value="Online Only (Microsoft Teams)" readonly style="background: rgba(0, 86, 179, 0.08); font-weight: 600;">
 </div>
 
 </section>
 
 <section>
 <div class="radio-option">
-<input type="checkbox" id="confirmCheck" name="commitment" value="Confirmed" required>
-<span>I confirm that I have a computer and stable internet access for online classes.</span>
+<input type="checkbox" name="commitment" required>
+<span>I confirm I have a computer and stable internet.</span>
 </div>
-<div class="error" id="checkboxError">Please confirm technical readiness before submitting</div>
 </section>
 
-<button type="submit" id="submitBtn" disabled>
+<button type="submit" id="submitBtn">
 <span id="btnText">Submit Registration</span>
 <div class="loader" id="loader"></div>
 </button>
@@ -147,76 +260,77 @@ April 2026 Holiday Intake. Register for our online STEM programs. Each course of
 </form>
 </div>
 
+<!-- SUCCESS -->
 <div id="success">
+
 <div class="success-icon">
-<svg viewBox="0 0 52 52">
-<circle cx="26" cy="26" r="25" fill="none" stroke="#22c55e" stroke-width="3"/>
-<path fill="none" stroke="#22c55e" stroke-width="4" d="M14 27l7 7 17-17"/>
-</svg>
+<i data-lucide="check-circle" style="color:#22c55e; width:70px; height:70px;"></i>
 </div>
-<h1>Registration Received!</h1>
-<p>Thank you for choosing TSI Online. We will send the Microsoft Teams invitation and curriculum guide for your selected level to your Email.</p>
-<button class="back-btn" onclick="window.location.reload()">Back</button>
+
+<h1>Registration Successful</h1>
+
+<p>Thank you for registering with Techsavanna Software Institute.</p>
+
+<div class="info-box">
+
+<div class="info-row">
+<i data-lucide="mail"></i>
+<span>Confirmation email will be sent shortly</span>
+</div>
+
+<div class="info-row">
+<i data-lucide="message-circle"></i>
+<span>Our team will contact you via WhatsApp</span>
+</div>
+
+<div class="info-row">
+<i data-lucide="calendar"></i>
+<span>You will receive onboarding & schedule details</span>
+</div>
+
+</div>
+
+<p style="margin-top:15px;">
+Contact: <strong>info@tsi.ac.ke</strong>
+</p>
+
+<button class="back-btn" onclick="location.reload()">Back</button>
+
 </div>
 
 </div>
 
 <script>
+lucide.createIcons();
+
 const form = document.getElementById('mainForm');
-const submitBtn = document.getElementById('submitBtn');
-const successScreen = document.getElementById('success');
 const loader = document.getElementById('loader');
-const checkbox = document.getElementById('confirmCheck');
 const btnText = document.getElementById('btnText');
-
-function validateForm(){
-  const valid = form.checkValidity() && checkbox.checked;
-  submitBtn.disabled = !valid;
-  return valid;
-}
-
-form.addEventListener('input', validateForm);
-checkbox.addEventListener('change', validateForm);
 
 form.addEventListener('submit', async function(e){
   e.preventDefault();
-  if(!validateForm()) return;
 
   loader.style.display='inline-block';
-  submitBtn.disabled=true;
   btnText.style.display='none';
 
   const formData = new FormData(form);
-  const jsonData = {};
-  formData.forEach((value, key) => jsonData[key] = value);
+  const data = new URLSearchParams(formData);
 
-  try {
-    const response = await fetch(
-      'https://script.google.com/macros/s/AKfycbx_lyi2Olr-_vacttTv0APbEizYbd0ewy2Om9BYki8rplV7gkHNP2NRH7N-W8rZDrzxXw/exec',
-      { 
-        method: 'POST',
-        body: new URLSearchParams(jsonData) 
-      }
-    );
+  const res = await fetch('YOUR_SCRIPT_URL', {
+    method:'POST',
+    body:data
+  });
 
-    const text = await response.text();
-    loader.style.display='none';
+  const text = await res.text();
 
-    if(text.trim() === 'Success'){
-      form.style.display='none';
-      successScreen.style.display='block';
-    } else {
-      submitBtn.disabled=false;
-      btnText.style.display='inline';
-      alert('Submission failed. Try again.');
-      console.error('Apps Script response:', text);
-    }
-  } catch(err){
-    loader.style.display='none';
-    submitBtn.disabled=false;
+  loader.style.display='none';
+
+  if(text === "Success"){
+    document.getElementById('formBody').style.display='none';
+    document.getElementById('success').style.display='block';
+  } else {
+    alert("Error submitting form");
     btnText.style.display='inline';
-    console.error(err);
-    alert('Submission failed. Check console.');
   }
 });
 </script>
