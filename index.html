@@ -282,6 +282,7 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 <input type="checkbox" name="commitment" id="commitment">
 <span>I confirm I have a computer and stable internet.</span>
 </div>
+<span class="error-message" id="commitmentError"></span>
 </section>
 
 <button type="submit" id="submitBtn">
@@ -401,7 +402,7 @@ form.addEventListener('submit', async function(e){
 
   // Commitment Checkbox
   if(!form.commitment.checked){
-    alert("You must confirm you have a computer and stable internet.");
+    document.getElementById('commitmentError').textContent = "You must confirm you have a computer and stable internet";
     valid = false;
   }
 
