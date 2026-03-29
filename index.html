@@ -170,6 +170,29 @@ button:disabled{
   margin-top:25px;
   padding:12px 35px;
 }
+
+/* Improved phone input styling */
+.phone-group .iti {
+  width: 100%;
+}
+.iti__flag-container {
+  margin-right: 10px;
+}
+.iti__selected-flag {
+  height: 42px;
+  line-height: 42px;
+}
+.iti__input {
+  padding-left: 60px !important;
+  height: 42px;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  border:1px solid var(--border);
+}
+.iti--allow-dropdown .iti__flag-container {
+  border-right: 1px solid var(--border);
+  padding-right: 8px;
+}
 </style>
 </head>
 
@@ -201,9 +224,9 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 <input type="email" name="email" required>
 </div>
 
-<div class="form-group">
+<div class="form-group phone-group">
 <label><i data-lucide="phone"></i> WhatsApp / Phone</label>
-<input type="tel" id="phone" name="phone" required>
+<input type="tel" id="phone" name="phone" required placeholder="Enter phone number">
 </div>
 
 <div class="form-group">
@@ -325,13 +348,24 @@ Contact: <strong>info@tsi.ac.ke</strong>
 <script>
 lucide.createIcons();
 
+// Initialize Intl-Tel-Input
 const phoneInput = document.querySelector("#phone");
 const iti = window.intlTelInput(phoneInput, {
   initialCountry: "ke",
   separateDialCode: true,
-  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+  autoPlaceholder: "aggressive",
+  nationalMode: false
 });
 
+// Real-time formatting
+phoneInput.addEventListener('input', () => {
+  if(phoneInput.value) {
+    phoneInput.value = iti.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL);
+  }
+});
+
+// Form submission
 const form = document.getElementById('mainForm');
 const loader = document.getElementById('loader');
 const btnText = document.getElementById('btnText');
