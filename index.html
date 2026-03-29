@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TSI April 2026 Online Registration</title>
+<title>TSI April 2026 Registration</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
-
-<!-- Intl-Tel-Input CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.min.css"/>
 
 <style>
@@ -17,85 +15,79 @@
   --secondary:#ff4500;
   --success:#22c55e;
   --danger:#ef4444;
-  --bg:#ffffff;
-  --glass:rgba(0, 86, 179, 0.03);
-  --border:rgba(0, 86, 179, 0.12);
+  --bg:#f9f9f9;
+  --card:#fff;
+  --border:#e2e8f0;
+  --shadow:rgba(0,0,0,0.05);
 }
 
-*{box-sizing:border-box;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Plus Jakarta Sans',sans-serif;}
 
 body{
-  margin:0;
-  font-family:'Plus Jakarta Sans',sans-serif;
   background:var(--bg);
+  padding:30px 15px;
   color:#1a1a1a;
-  padding:40px 15px;
 }
 
 .container{
-  max-width:800px;
+  max-width:700px;
   margin:auto;
-  padding:50px;
-  border-radius:28px;
-  background:var(--glass);
-  backdrop-filter:blur(25px);
-  border:1px solid var(--border);
-  box-shadow:0 30px 70px rgba(0,0,0,0.05);
+  background:var(--card);
+  border-radius:20px;
+  box-shadow:0 10px 30px var(--shadow);
+  padding:40px 30px;
 }
 
 h1{
-  font-size:2.6rem;
-  margin-bottom:12px;
-  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  font-size:2.2rem;
+  text-align:center;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  margin-bottom:10px;
 }
 
 .description{
-  color:#444;
-  margin-bottom:40px;
-  border-bottom:1px solid var(--border);
-  padding-bottom:25px;
+  text-align:center;
+  color:#555;
+  margin-bottom:30px;
   font-weight:500;
 }
 
-section{margin-bottom:40px;}
+section{margin-bottom:30px;}
 
 h3{
   font-size:0.85rem;
   text-transform:uppercase;
-  letter-spacing:2px;
+  letter-spacing:1.5px;
   color:var(--primary);
-  margin-bottom:20px;
+  margin-bottom:15px;
   font-weight:700;
 }
 
-.form-group{margin-bottom:22px;}
+.form-group{margin-bottom:20px;}
 
 label{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:0.85rem;
-  margin-bottom:8px;
+  font-size:0.9rem;
   font-weight:600;
+  display:block;
+  margin-bottom:6px;
 }
 
 input,select{
   width:100%;
-  padding:15px;
-  border-radius:14px;
+  padding:12px 15px;
+  border-radius:12px;
   border:1px solid var(--border);
-  background:rgba(255,255,255,0.8);
   font-size:0.95rem;
   transition:0.3s;
+  background:#fafafa;
 }
 
 input:focus,select:focus{
-  outline:none;
   border-color:var(--primary);
-  background:#fff;
-  box-shadow:0 0 0 4px rgba(0,86,179,0.1);
+  outline:none;
+  box-shadow:0 0 0 4px rgba(0,86,179,0.08);
 }
 
 .radio-option{
@@ -103,31 +95,30 @@ input:focus,select:focus{
   align-items:center;
   gap:12px;
   padding:14px;
-  background:rgba(0,86,179,0.05);
+  background:rgba(0,86,179,0.03);
   border-radius:12px;
+  font-size:0.95rem;
 }
 
 button{
   width:100%;
-  padding:18px;
+  padding:15px;
   border:none;
-  border-radius:16px;
-  font-size:1.05rem;
+  border-radius:12px;
+  font-size:1rem;
   font-weight:700;
-  background:linear-gradient(90deg,var(--primary),var(--secondary));
   color:white;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
   cursor:pointer;
   transition:0.3s;
 }
 
 button:hover:not(:disabled){
-  transform:translateY(-3px);
-  box-shadow:0 12px 30px rgba(0,86,179,0.3);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,86,179,0.2);
 }
 
-button:disabled{
-  opacity:0.6;
-}
+button:disabled{opacity:0.6;}
 
 .loader{
   display:none;
@@ -140,9 +131,7 @@ button:disabled{
   animation:spin 1s linear infinite;
 }
 
-@keyframes spin{
-  100%{transform:rotate(360deg);}
-}
+@keyframes spin{100%{transform:rotate(360deg);}}
 
 #success{display:none;text-align:center;}
 
@@ -154,7 +143,7 @@ button:disabled{
   margin-top:20px;
   padding:20px;
   border-radius:14px;
-  background:rgba(0,86,179,0.05);
+  background:rgba(0,86,179,0.03);
   border:1px solid var(--border);
   text-align:left;
 }
@@ -171,49 +160,34 @@ button:disabled{
   padding:12px 35px;
 }
 
-/* Improved phone input styling */
-.phone-group .iti {
-  width: 100%;
-}
-.iti__flag-container {
-  margin-right: 10px;
-}
-.iti__selected-flag {
-  height: 42px;
-  line-height: 42px;
-}
-.iti__input {
-  padding-left: 60px !important;
-  height: 42px;
-  font-size: 0.95rem;
-  border-radius: 12px;
+/* PHONE INPUT MODERN */
+.phone-group .iti{width:100%;}
+.iti__flag-container{margin-right:10px;}
+.iti__selected-flag{height:42px;line-height:42px;}
+.iti__input{
+  padding-left:60px!important;
+  height:42px;
+  border-radius:12px;
   border:1px solid var(--border);
+  font-size:0.95rem;
 }
-.iti--allow-dropdown .iti__flag-container {
-  border-right: 1px solid var(--border);
-  padding-right: 8px;
+.iti--allow-dropdown .iti__flag-container{
+  border-right:1px solid var(--border);
+  padding-right:8px;
 }
 </style>
 </head>
-
 <body>
 
 <div class="container">
+<h1>Techsavanna Software Institute</h1>
+<p class="description">April 2026 Holiday Intake. Register your child for one of our specialized online STEM programs.</p>
 
 <div id="formBody">
-
-<h1>Techsavanna Software Institute</h1>
-
-<p class="description">
-April 2026 Holiday Intake. Register your child for one of our specialized online STEM programs.
-</p>
-
 <form id="mainForm">
 
-<!-- Guardian & Student Info -->
 <section>
 <h3>Guardian & Student Info</h3>
-
 <div class="form-group">
 <label><i data-lucide="user"></i> Parent Name</label>
 <input type="text" name="parentName" required>
@@ -245,27 +219,23 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 </div>
 </section>
 
-<!-- Awareness / Referral -->
 <section>
 <h3>Awareness</h3>
-
 <div class="form-group">
 <label><i data-lucide="users"></i> How did you hear about TSI?</label>
 <select name="referralSource" required>
-  <option value="">Select source</option>
-  <option>WhatsApp Status/Group</option>
-  <option>Social Media (Facebook/Instagram)</option>
-  <option>Referral from a Friend</option>
-  <option>Physical Poster/Flyer</option>
-  <option>Other</option>
+<option value="">Select source</option>
+<option>WhatsApp Status/Group</option>
+<option>Social Media (Facebook/Instagram)</option>
+<option>Referral from a Friend</option>
+<option>Physical Poster/Flyer</option>
+<option>Other</option>
 </select>
 </div>
 </section>
 
-<!-- Enrollment -->
 <section>
 <h3>Enrollment</h3>
-
 <div class="form-group">
 <label><i data-lucide="book-open"></i> Course</label>
 <select name="courseSelection" required>
@@ -287,7 +257,6 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 </div>
 </section>
 
-<!-- Technical Confirmation -->
 <section>
 <div class="radio-option">
 <input type="checkbox" name="commitment" required>
@@ -299,56 +268,31 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 <span id="btnText">Submit Registration</span>
 <div class="loader" id="loader"></div>
 </button>
-
 </form>
 </div>
 
-<!-- SUCCESS -->
 <div id="success">
-
 <div class="success-icon">
-<i data-lucide="check-circle" style="color:#22c55e; width:70px; height:70px;"></i>
+<i data-lucide="check-circle" style="color:var(--success); width:70px; height:70px;"></i>
 </div>
-
 <h1>Registration Successful</h1>
-
 <p>Thank you for registering with Techsavanna Software Institute.</p>
 
 <div class="info-box">
-
-<div class="info-row">
-<i data-lucide="mail"></i>
-<span>Confirmation email will be sent shortly</span>
+<div class="info-row"><i data-lucide="mail"></i><span>Confirmation email will be sent shortly</span></div>
+<div class="info-row"><i data-lucide="message-circle"></i><span>Our team will contact you via WhatsApp</span></div>
+<div class="info-row"><i data-lucide="calendar"></i><span>You will receive onboarding & schedule details</span></div>
 </div>
 
-<div class="info-row">
-<i data-lucide="message-circle"></i>
-<span>Our team will contact you via WhatsApp</span>
-</div>
-
-<div class="info-row">
-<i data-lucide="calendar"></i>
-<span>You will receive onboarding & schedule details</span>
-</div>
-
-</div>
-
-<p style="margin-top:15px;">
-Contact: <strong>info@tsi.ac.ke</strong>
-</p>
-
+<p style="margin-top:15px;">Contact: <strong>info@tsi.ac.ke</strong></p>
 <button class="back-btn" onclick="location.reload()">Back</button>
-
+</div>
 </div>
 
-</div>
-
-<!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 <script>
 lucide.createIcons();
 
-// Initialize Intl-Tel-Input
 const phoneInput = document.querySelector("#phone");
 const iti = window.intlTelInput(phoneInput, {
   initialCountry: "ke",
@@ -358,46 +302,40 @@ const iti = window.intlTelInput(phoneInput, {
   nationalMode: false
 });
 
-// Real-time formatting
-phoneInput.addEventListener('input', () => {
-  if(phoneInput.value) {
+phoneInput.addEventListener('input',()=>{
+  if(phoneInput.value){
     phoneInput.value = iti.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL);
   }
 });
 
-// Form submission
 const form = document.getElementById('mainForm');
 const loader = document.getElementById('loader');
 const btnText = document.getElementById('btnText');
 
 form.addEventListener('submit', async function(e){
-  e.preventDefault();
+e.preventDefault();
+loader.style.display='inline-block';
+btnText.style.display='none';
 
-  loader.style.display='inline-block';
-  btnText.style.display='none';
+const fullNumber = iti.getNumber();
+const formData = new FormData(form);
+formData.set('phone',fullNumber);
+const data = new URLSearchParams(formData);
 
-  const fullNumber = iti.getNumber();
+const res = await fetch('https://script.google.com/macros/s/AKfycbxW4y1PtT-H5fburdEJTxsaA25SVw_XOtu6UkBWwuSERs_0UxUuOQnN1Qa-JYqW8XUcug/exec',{
+  method:'POST', body:data
+});
 
-  const formData = new FormData(form);
-  formData.set('phone', fullNumber); // override phone
-  const data = new URLSearchParams(formData);
+const text = await res.text();
+loader.style.display='none';
 
-  const res = await fetch('https://script.google.com/macros/s/AKfycbxW4y1PtT-H5fburdEJTxsaA25SVw_XOtu6UkBWwuSERs_0UxUuOQnN1Qa-JYqW8XUcug/exec', {
-    method:'POST',
-    body:data
-  });
-
-  const text = await res.text();
-
-  loader.style.display='none';
-
-  if(text === "Success"){
-    document.getElementById('formBody').style.display='none';
-    document.getElementById('success').style.display='block';
-  } else {
-    alert("Error submitting form");
-    btnText.style.display='inline';
-  }
+if(text==="Success"){
+  document.getElementById('formBody').style.display='none';
+  document.getElementById('success').style.display='block';
+}else{
+  alert("Error submitting form");
+  btnText.style.display='inline';
+}
 });
 </script>
 
