@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TSI April 2026 Registration</title>
+<title>TSI April 2026 Online Registration</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.min.css"/>
 
 <style>
 :root{
@@ -15,79 +14,85 @@
   --secondary:#ff4500;
   --success:#22c55e;
   --danger:#ef4444;
-  --bg:#f9f9f9;
-  --card:#fff;
-  --border:#e2e8f0;
-  --shadow:rgba(0,0,0,0.05);
+  --bg:#ffffff;
+  --glass:rgba(0, 86, 179, 0.03);
+  --border:rgba(0, 86, 179, 0.12);
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Plus Jakarta Sans',sans-serif;}
+*{box-sizing:border-box;}
 
 body{
+  margin:0;
+  font-family:'Plus Jakarta Sans',sans-serif;
   background:var(--bg);
-  padding:30px 15px;
   color:#1a1a1a;
+  padding:40px 15px;
 }
 
 .container{
-  max-width:700px;
+  max-width:800px;
   margin:auto;
-  background:var(--card);
-  border-radius:20px;
-  box-shadow:0 10px 30px var(--shadow);
-  padding:40px 30px;
+  padding:50px;
+  border-radius:28px;
+  background:var(--glass);
+  backdrop-filter:blur(25px);
+  border:1px solid var(--border);
+  box-shadow:0 30px 70px rgba(0,0,0,0.05);
 }
 
 h1{
-  font-size:2.2rem;
-  text-align:center;
-  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  font-size:2.6rem;
+  margin-bottom:12px;
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  margin-bottom:10px;
 }
 
 .description{
-  text-align:center;
-  color:#555;
-  margin-bottom:30px;
+  color:#444;
+  margin-bottom:40px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:25px;
   font-weight:500;
 }
 
-section{margin-bottom:30px;}
+section{margin-bottom:40px;}
 
 h3{
   font-size:0.85rem;
   text-transform:uppercase;
-  letter-spacing:1.5px;
+  letter-spacing:2px;
   color:var(--primary);
-  margin-bottom:15px;
+  margin-bottom:20px;
   font-weight:700;
 }
 
-.form-group{margin-bottom:20px;}
+.form-group{margin-bottom:22px;}
 
 label{
-  font-size:0.9rem;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:0.85rem;
+  margin-bottom:8px;
   font-weight:600;
-  display:block;
-  margin-bottom:6px;
 }
 
 input,select{
   width:100%;
-  padding:12px 15px;
-  border-radius:12px;
+  padding:15px;
+  border-radius:14px;
   border:1px solid var(--border);
+  background:rgba(255,255,255,0.8);
   font-size:0.95rem;
   transition:0.3s;
-  background:#fafafa;
 }
 
 input:focus,select:focus{
-  border-color:var(--primary);
   outline:none;
-  box-shadow:0 0 0 4px rgba(0,86,179,0.08);
+  border-color:var(--primary);
+  background:#fff;
+  box-shadow:0 0 0 4px rgba(0,86,179,0.1);
 }
 
 .radio-option{
@@ -95,30 +100,31 @@ input:focus,select:focus{
   align-items:center;
   gap:12px;
   padding:14px;
-  background:rgba(0,86,179,0.03);
+  background:rgba(0,86,179,0.05);
   border-radius:12px;
-  font-size:0.95rem;
 }
 
 button{
   width:100%;
-  padding:15px;
+  padding:18px;
   border:none;
-  border-radius:12px;
-  font-size:1rem;
+  border-radius:16px;
+  font-size:1.05rem;
   font-weight:700;
-  color:white;
   background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:white;
   cursor:pointer;
   transition:0.3s;
 }
 
 button:hover:not(:disabled){
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(0,86,179,0.2);
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,86,179,0.3);
 }
 
-button:disabled{opacity:0.6;}
+button:disabled{
+  opacity:0.6;
+}
 
 .loader{
   display:none;
@@ -131,7 +137,9 @@ button:disabled{opacity:0.6;}
   animation:spin 1s linear infinite;
 }
 
-@keyframes spin{100%{transform:rotate(360deg);}}
+@keyframes spin{
+  100%{transform:rotate(360deg);}
+}
 
 #success{display:none;text-align:center;}
 
@@ -143,7 +151,7 @@ button:disabled{opacity:0.6;}
   margin-top:20px;
   padding:20px;
   border-radius:14px;
-  background:rgba(0,86,179,0.03);
+  background:rgba(0,86,179,0.05);
   border:1px solid var(--border);
   text-align:left;
 }
@@ -159,35 +167,27 @@ button:disabled{opacity:0.6;}
   margin-top:25px;
   padding:12px 35px;
 }
-
-/* PHONE INPUT MODERN */
-.phone-group .iti{width:100%;}
-.iti__flag-container{margin-right:10px;}
-.iti__selected-flag{height:42px;line-height:42px;}
-.iti__input{
-  padding-left:60px!important;
-  height:42px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  font-size:0.95rem;
-}
-.iti--allow-dropdown .iti__flag-container{
-  border-right:1px solid var(--border);
-  padding-right:8px;
-}
 </style>
 </head>
+
 <body>
 
 <div class="container">
-<h1>Techsavanna Software Institute</h1>
-<p class="description">April 2026 Holiday Intake. Register your child for one of our specialized online STEM programs.</p>
 
 <div id="formBody">
+
+<h1>Techsavanna Software Institute</h1>
+
+<p class="description">
+April 2026 Holiday Intake. Register your child for one of our specialized online STEM programs.
+</p>
+
 <form id="mainForm">
 
+<!-- Guardian & Student Info -->
 <section>
 <h3>Guardian & Student Info</h3>
+
 <div class="form-group">
 <label><i data-lucide="user"></i> Parent Name</label>
 <input type="text" name="parentName" required>
@@ -198,9 +198,9 @@ button:disabled{opacity:0.6;}
 <input type="email" name="email" required>
 </div>
 
-<div class="form-group phone-group">
-<label><i data-lucide="phone"></i> WhatsApp / Phone</label>
-<input type="tel" id="phone" name="phone" required placeholder="Enter phone number">
+<div class="form-group">
+<label><i data-lucide="phone"></i> WhatsApp</label>
+<input type="tel" name="phone" required>
 </div>
 
 <div class="form-group">
@@ -219,23 +219,27 @@ button:disabled{opacity:0.6;}
 </div>
 </section>
 
+<!-- Awareness / Referral -->
 <section>
 <h3>Awareness</h3>
+
 <div class="form-group">
 <label><i data-lucide="users"></i> How did you hear about TSI?</label>
 <select name="referralSource" required>
-<option value="">Select source</option>
-<option>WhatsApp Status/Group</option>
-<option>Social Media (Facebook/Instagram)</option>
-<option>Referral from a Friend</option>
-<option>Physical Poster/Flyer</option>
-<option>Other</option>
+  <option value="">Select source</option>
+  <option>WhatsApp Status/Group</option>
+  <option>Social Media (Facebook/Instagram)</option>
+  <option>Referral from a Friend</option>
+  <option>Physical Poster/Flyer</option>
+  <option>Other</option>
 </select>
 </div>
 </section>
 
+<!-- Enrollment -->
 <section>
 <h3>Enrollment</h3>
+
 <div class="form-group">
 <label><i data-lucide="book-open"></i> Course</label>
 <select name="courseSelection" required>
@@ -257,6 +261,7 @@ button:disabled{opacity:0.6;}
 </div>
 </section>
 
+<!-- Technical Confirmation -->
 <section>
 <div class="radio-option">
 <input type="checkbox" name="commitment" required>
@@ -268,74 +273,82 @@ button:disabled{opacity:0.6;}
 <span id="btnText">Submit Registration</span>
 <div class="loader" id="loader"></div>
 </button>
+
 </form>
 </div>
 
+<!-- SUCCESS -->
 <div id="success">
+
 <div class="success-icon">
-<i data-lucide="check-circle" style="color:var(--success); width:70px; height:70px;"></i>
+<i data-lucide="check-circle" style="color:#22c55e; width:70px; height:70px;"></i>
 </div>
+
 <h1>Registration Successful</h1>
+
 <p>Thank you for registering with Techsavanna Software Institute.</p>
 
 <div class="info-box">
-<div class="info-row"><i data-lucide="mail"></i><span>Confirmation email will be sent shortly</span></div>
-<div class="info-row"><i data-lucide="message-circle"></i><span>Our team will contact you via WhatsApp</span></div>
-<div class="info-row"><i data-lucide="calendar"></i><span>You will receive onboarding & schedule details</span></div>
+
+<div class="info-row">
+<i data-lucide="mail"></i>
+<span>Confirmation email will be sent shortly</span>
 </div>
 
-<p style="margin-top:15px;">Contact: <strong>info@tsi.ac.ke</strong></p>
+<div class="info-row">
+<i data-lucide="message-circle"></i>
+<span>Our team will contact you via WhatsApp</span>
+</div>
+
+<div class="info-row">
+<i data-lucide="calendar"></i>
+<span>You will receive onboarding & schedule details</span>
+</div>
+
+</div>
+
+<p style="margin-top:15px;">
+Contact: <strong>info@tsi.ac.ke</strong>
+</p>
+
 <button class="back-btn" onclick="location.reload()">Back</button>
-</div>
+
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+</div>
+
 <script>
 lucide.createIcons();
-
-const phoneInput = document.querySelector("#phone");
-const iti = window.intlTelInput(phoneInput, {
-  initialCountry: "ke",
-  separateDialCode: true,
-  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
-  autoPlaceholder: "aggressive",
-  nationalMode: false
-});
-
-phoneInput.addEventListener('input',()=>{
-  if(phoneInput.value){
-    phoneInput.value = iti.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL);
-  }
-});
 
 const form = document.getElementById('mainForm');
 const loader = document.getElementById('loader');
 const btnText = document.getElementById('btnText');
 
 form.addEventListener('submit', async function(e){
-e.preventDefault();
-loader.style.display='inline-block';
-btnText.style.display='none';
+  e.preventDefault();
 
-const fullNumber = iti.getNumber();
-const formData = new FormData(form);
-formData.set('phone',fullNumber);
-const data = new URLSearchParams(formData);
+  loader.style.display='inline-block';
+  btnText.style.display='none';
 
-const res = await fetch('https://script.google.com/macros/s/AKfycbxW4y1PtT-H5fburdEJTxsaA25SVw_XOtu6UkBWwuSERs_0UxUuOQnN1Qa-JYqW8XUcug/exec',{
-  method:'POST', body:data
-});
+  const formData = new FormData(form);
+  const data = new URLSearchParams(formData);
 
-const text = await res.text();
-loader.style.display='none';
+  const res = await fetch('https://script.google.com/macros/s/AKfycbwXKTbUgWTbNZvSNJy4n4Mc3sJzTjlRxArLfIq3ol8FfbUi47rSCJ_cnDhtNtixdYEqEA/exec', {
+    method:'POST',
+    body:data
+  });
 
-if(text==="Success"){
-  document.getElementById('formBody').style.display='none';
-  document.getElementById('success').style.display='block';
-}else{
-  alert("Error submitting form");
-  btnText.style.display='inline';
-}
+  const text = await res.text();
+
+  loader.style.display='none';
+
+  if(text === "Success"){
+    document.getElementById('formBody').style.display='none';
+    document.getElementById('success').style.display='block';
+  } else {
+    alert("Error submitting form");
+    btnText.style.display='inline';
+  }
 });
 </script>
 
