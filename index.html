@@ -141,7 +141,6 @@ button:disabled{
   100%{transform:rotate(360deg);}
 }
 
-
 #success{display:none;text-align:center;}
 
 .success-icon{
@@ -185,6 +184,7 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 
 <form id="mainForm">
 
+<!-- Guardian & Student Info -->
 <section>
 <h3>Guardian & Student Info</h3>
 
@@ -217,9 +217,26 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 <option>Ages 13+</option>
 </select>
 </div>
-
 </section>
 
+<!-- Awareness / Referral -->
+<section>
+<h3>Awareness</h3>
+
+<div class="form-group">
+<label><i data-lucide="users"></i> How did you hear about TSI?</label>
+<select name="referralSource" required>
+  <option value="">Select source</option>
+  <option>WhatsApp Status/Group</option>
+  <option>Social Media (Facebook/Instagram)</option>
+  <option>Referral from a Friend</option>
+  <option>Physical Poster/Flyer</option>
+  <option>Other</option>
+</select>
+</div>
+</section>
+
+<!-- Enrollment -->
 <section>
 <h3>Enrollment</h3>
 
@@ -242,9 +259,9 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 <option>Level 3</option>
 </select>
 </div>
-
 </section>
 
+<!-- Technical Confirmation -->
 <section>
 <div class="radio-option">
 <input type="checkbox" name="commitment" required>
@@ -260,6 +277,7 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 </form>
 </div>
 
+<!-- SUCCESS -->
 <div id="success">
 
 <div class="success-icon">
