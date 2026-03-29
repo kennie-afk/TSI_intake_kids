@@ -8,6 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
 
+<!-- Intl-Tel-Input CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.min.css"/>
+
 <style>
 :root{
   --primary:#0056b3;
@@ -167,6 +170,20 @@ button:disabled{
   margin-top:25px;
   padding:12px 35px;
 }
+
+/* Country code + phone container */
+.phone-container {
+  display: flex;
+  gap: 8px;
+}
+
+.phone-container .iti {
+  width: 35%;
+}
+
+.phone-container input[type="tel"] {
+  width: 65%;
+}
 </style>
 </head>
 
@@ -199,8 +216,11 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 </div>
 
 <div class="form-group">
-<label><i data-lucide="phone"></i> WhatsApp</label>
-<input type="tel" name="phone" required>
+<label><i data-lucide="phone"></i> WhatsApp / Phone</label>
+<div class="phone-container">
+  <input id="phoneCode" type="tel">
+  <input type="tel" id="phoneNumber" name="phone" placeholder="Enter number" required>
+</div>
 </div>
 
 <div class="form-group">
@@ -317,8 +337,17 @@ Contact: <strong>info@tsi.ac.ke</strong>
 
 </div>
 
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 <script>
 lucide.createIcons();
+
+const phoneInput = document.querySelector("#phoneCode");
+const iti = window.intlTelInput(phoneInput, {
+  initialCountry: "ke",
+  separateDialCode: true,
+  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+});
 
 const form = document.getElementById('mainForm');
 const loader = document.getElementById('loader');
@@ -330,7 +359,14 @@ form.addEventListener('submit', async function(e){
   loader.style.display='inline-block';
   btnText.style.display='none';
 
+  
+  const countryCode = iti.getSelectedCountryData().dialCode;
+  const localNumber = document.getElementById('phoneNumber').value.trim();
+  const fullNumber = `+${countryCode}${localNumber}`;
+
+  
   const formData = new FormData(form);
+  formData.set('phone', fullNumber);
   const data = new URLSearchParams(formData);
 
   const res = await fetch('https://script.google.com/macros/s/AKfycbxW4y1PtT-H5fburdEJTxsaA25SVw_XOtu6UkBWwuSERs_0UxUuOQnN1Qa-JYqW8XUcug/exec', {
