@@ -10,8 +10,9 @@
 
 <style>
 :root{
-  --primary:#0056b3;
-  --secondary:#ff4500;
+  --primary:#0056b3; 
+  --secondary:#ffd700; 
+  --tertiary:#ef4444; 
   --success:#22c55e;
   --danger:#ef4444;
   --bg:#ffffff;
@@ -43,9 +44,11 @@ body{
 h1{
   font-size:2.6rem;
   margin-bottom:12px;
-  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  background-clip: text;
+  color: transparent; 
 }
 
 .description{
@@ -111,7 +114,7 @@ button{
   border-radius:16px;
   font-size:1.05rem;
   font-weight:700;
-  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
   color:white;
   cursor:pointer;
   transition:0.3s;
@@ -191,7 +194,6 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 
 <form id="mainForm">
 
-<!-- Guardian & Student Info -->
 <section>
 <h3>Guardian & Student Info</h3>
 
@@ -231,7 +233,6 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 </div>
 </section>
 
-<!-- Awareness / Referral -->
 <section>
 <h3>Awareness</h3>
 
@@ -250,7 +251,6 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 </div>
 </section>
 
-<!-- Enrollment -->
 <section>
 <h3>Enrollment</h3>
 
@@ -277,7 +277,6 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 </div>
 </section>
 
-<!-- Technical Confirmation -->
 <section>
 <div class="radio-option">
 <input type="checkbox" name="commitment" id="commitment">
@@ -294,7 +293,6 @@ April 2026 Holiday Intake. Register your child for one of our specialized online
 </form>
 </div>
 
-<!-- SUCCESS -->
 <div id="success">
 
 <div class="success-icon">
@@ -344,18 +342,18 @@ const btnText = document.getElementById('btnText');
 form.addEventListener('submit', async function(e){
   e.preventDefault();
 
-  // Clear previous errors
+  
   document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
 
   let valid = true;
 
-  // Parent Name
+  
   if(!form.parentName.value.trim()){
     document.getElementById('parentNameError').textContent = "Parent Name is required";
     valid = false;
   }
 
-  // Email
+  
   const emailVal = form.email.value.trim();
   if(!emailVal){
     document.getElementById('emailError').textContent = "Email is required";
@@ -365,43 +363,41 @@ form.addEventListener('submit', async function(e){
     valid = false;
   }
 
-  // Phone
+  
   if(!form.phone.value.trim()){
     document.getElementById('phoneError').textContent = "Phone number is required";
     valid = false;
   }
 
-  // Student Name
+
   if(!form.studentName.value.trim()){
     document.getElementById('studentNameError').textContent = "Student Name is required";
     valid = false;
   }
 
-  // Age Group
+  
   if(!form.ageGroup.value){
     document.getElementById('ageGroupError').textContent = "Select an Age Group";
     valid = false;
   }
 
-  // Referral Source
+  
   if(!form.referralSource.value){
     document.getElementById('referralSourceError').textContent = "Select a source";
     valid = false;
   }
 
-  // Course
+  
   if(!form.courseSelection.value){
     document.getElementById('courseSelectionError').textContent = "Select a Course";
     valid = false;
   }
 
-  // Level
   if(!form.intakeLevel.value){
     document.getElementById('intakeLevelError').textContent = "Select a Level";
     valid = false;
   }
 
-  // Commitment Checkbox
   if(!form.commitment.checked){
     document.getElementById('commitmentError').textContent = "You must confirm you have a computer and stable internet";
     valid = false;
