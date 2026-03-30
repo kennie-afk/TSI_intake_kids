@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TSI Online Registration</title>
+<title>TSI April 2026 Online Registration</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
@@ -189,7 +189,7 @@ button:disabled{
 <h1>Techsavanna Software Institute</h1>
 
 <p class="description">
-Online STEM Programs Registration. Please fill in the details below to enroll your child.
+April 2026 Holiday Intake. Register your child for one of our specialized online STEM programs.
 </p>
 
 <form id="mainForm">
@@ -199,32 +199,32 @@ Online STEM Programs Registration. Please fill in the details below to enroll yo
 
 <div class="form-group">
 <label><i data-lucide="user"></i> Parent Name</label>
-<input type="text" name="parentName" id="parentName" placeholder="Full Name">
+<input type="text" name="parentName" id="parentName">
 <span class="error-message" id="parentNameError"></span>
 </div>
 
 <div class="form-group">
 <label><i data-lucide="mail"></i> Email</label>
-<input type="email" name="email" id="email" placeholder="example@mail.com">
+<input type="email" name="email" id="email">
 <span class="error-message" id="emailError"></span>
 </div>
 
 <div class="form-group">
 <label><i data-lucide="phone"></i> WhatsApp</label>
-<input type="tel" name="phone" id="phone" placeholder="Phone Number">
+<input type="tel" name="phone" id="phone">
 <span class="error-message" id="phoneError"></span>
 </div>
 
 <div class="form-group">
 <label><i data-lucide="user"></i> Student Name</label>
-<input type="text" name="studentName" id="studentName" placeholder="Child's Full Name">
+<input type="text" name="studentName" id="studentName">
 <span class="error-message" id="studentNameError"></span>
 </div>
 
 <div class="form-group">
 <label><i data-lucide="users"></i> Age Group</label>
 <select name="ageGroup" id="ageGroup">
-<option value="">Select Age Group</option>
+<option value="">Select</option>
 <option>Ages 5-7</option>
 <option>Ages 8-12</option>
 <option>Ages 13+</option>
@@ -237,12 +237,12 @@ Online STEM Programs Registration. Please fill in the details below to enroll yo
 <h3>Awareness</h3>
 
 <div class="form-group">
-<label><i data-lucide="help-circle"></i> How did you hear about TSI?</label>
+<label><i data-lucide="users"></i> How did you hear about TSI?</label>
 <select name="referralSource" id="referralSource">
   <option value="">Select source</option>
   <option>Walk-In</option>
   <option>WhatsApp Status/Group</option>
-  <option>Social Media (TikTok/Instagram/Facebook)</option>
+  <option>Social Media (Tiktok/Instagram/Facebook)</option>
   <option>Referral from a Friend</option>
   <option>Physical Poster/Flyer</option>
   <option>Other</option>
@@ -252,36 +252,26 @@ Online STEM Programs Registration. Please fill in the details below to enroll yo
 </section>
 
 <section>
-<h3>Enrollment Selection</h3>
+<h3>Enrollment</h3>
 
 <div class="form-group">
-<label><i data-lucide="calendar"></i> Preferred Intake</label>
-<select name="intakePeriod" id="intakePeriod">
-<option value="">Choose Intake Session</option>
-<option value="April Holiday Intake">April Holiday Intake</option>
-<option value="September Main Intake">September Main Intake</option>
-</select>
-<span class="error-message" id="intakePeriodError"></span>
-</div>
-
-<div class="form-group">
-<label><i data-lucide="book-open"></i> Course Path</label>
+<label><i data-lucide="book-open"></i> Course</label>
 <select name="courseSelection" id="courseSelection">
-<option value="">Choose Program</option>
+<option value="">Choose</option>
 <option>Coding for Kids</option>
-<option>Robotics & Electronics</option>
+<option>Robotics</option>
 <option>Web Development for Juniors</option>
 </select>
 <span class="error-message" id="courseSelectionError"></span>
 </div>
 
 <div class="form-group">
-<label><i data-lucide="layers"></i> Target Level</label>
+<label><i data-lucide="layers"></i> Level</label>
 <select name="intakeLevel" id="intakeLevel">
-<option value="">Select Level</option>
-<option>Level 1 (Beginner)</option>
-<option>Level 2 (Intermediate)</option>
-<option>Level 3 (Advanced)</option>
+<option value="">Select</option>
+<option>Level 1</option>
+<option>Level 2</option>
+<option>Level 3</option>
 </select>
 <span class="error-message" id="intakeLevelError"></span>
 </div>
@@ -290,7 +280,7 @@ Online STEM Programs Registration. Please fill in the details below to enroll yo
 <section>
 <div class="radio-option">
 <input type="checkbox" name="commitment" id="commitment">
-<span>I confirm I have a computer and stable internet for online classes.</span>
+<span>I confirm I have a computer and stable internet.</span>
 </div>
 <span class="error-message" id="commitmentError"></span>
 </section>
@@ -326,11 +316,15 @@ Online STEM Programs Registration. Please fill in the details below to enroll yo
 </div>
 
 <div class="info-row">
-<i data-lucide="info"></i>
-<span>Onboarding details for your session will follow</span>
+<i data-lucide="calendar"></i>
+<span>You will receive onboarding & schedule details</span>
 </div>
 
 </div>
+
+<p style="margin-top:15px;">
+Contact: <strong>info@tsi.ac.ke</strong>
+</p>
 
 <button class="back-btn" onclick="location.reload()">Back</button>
 
@@ -348,15 +342,18 @@ const btnText = document.getElementById('btnText');
 form.addEventListener('submit', async function(e){
   e.preventDefault();
 
+  
   document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
 
   let valid = true;
 
+  
   if(!form.parentName.value.trim()){
     document.getElementById('parentNameError').textContent = "Parent Name is required";
     valid = false;
   }
 
+  
   const emailVal = form.email.value.trim();
   if(!emailVal){
     document.getElementById('emailError').textContent = "Email is required";
@@ -366,31 +363,31 @@ form.addEventListener('submit', async function(e){
     valid = false;
   }
 
+  
   if(!form.phone.value.trim()){
     document.getElementById('phoneError').textContent = "Phone number is required";
     valid = false;
   }
+
 
   if(!form.studentName.value.trim()){
     document.getElementById('studentNameError').textContent = "Student Name is required";
     valid = false;
   }
 
+  
   if(!form.ageGroup.value){
     document.getElementById('ageGroupError').textContent = "Select an Age Group";
     valid = false;
   }
 
+  
   if(!form.referralSource.value){
     document.getElementById('referralSourceError').textContent = "Select a source";
     valid = false;
   }
 
-  if(!form.intakePeriod.value){
-    document.getElementById('intakePeriodError').textContent = "Select an intake session";
-    valid = false;
-  }
-
+  
   if(!form.courseSelection.value){
     document.getElementById('courseSelectionError').textContent = "Select a Course";
     valid = false;
@@ -402,7 +399,7 @@ form.addEventListener('submit', async function(e){
   }
 
   if(!form.commitment.checked){
-    document.getElementById('commitmentError').textContent = "You must confirm equipment availability";
+    document.getElementById('commitmentError').textContent = "You must confirm you have a computer and stable internet";
     valid = false;
   }
 
@@ -414,24 +411,20 @@ form.addEventListener('submit', async function(e){
   const formData = new FormData(form);
   const data = new URLSearchParams(formData);
 
-  try {
-    const res = await fetch('https://script.google.com/macros/s/AKfycbzFrD05dsSrqIT8N-FBKe2X3ZGzqVtuct0WoBDdNDcVVAbsoEh6yhZlI0EHVXu9I4WGWw/exec', {
-      method:'POST',
-      body:data
-    });
+  const res = await fetch('https://script.google.com/macros/s/AKfycbzFrD05dsSrqIT8N-FBKe2X3ZGzqVtuct0WoBDdNDcVVAbsoEh6yhZlI0EHVXu9I4WGWw/exec', {
+    method:'POST',
+    body:data
+  });
 
-    const text = await res.text();
-    loader.style.display='none';
+  const text = await res.text();
 
-    if(text === "Success" || (res.ok)){
-      document.getElementById('formBody').style.display='none';
-      document.getElementById('success').style.display='block';
-    } else {
-      throw new Error();
-    }
-  } catch (err) {
-    loader.style.display='none';
-    alert("Error submitting form. Please try again.");
+  loader.style.display='none';
+
+  if(text === "Success"){
+    document.getElementById('formBody').style.display='none';
+    document.getElementById('success').style.display='block';
+  } else {
+    alert("Error submitting form");
     btnText.style.display='inline';
   }
 });
