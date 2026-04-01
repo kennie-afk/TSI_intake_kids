@@ -44,7 +44,6 @@ body{
 h1{
   font-size:2.6rem;
   margin-bottom:12px;
-  color: #1a1a1a; /* Base color for potential fallback */
 }
 
 .description{
@@ -110,7 +109,7 @@ button{
   border-radius:16px;
   font-size:1.05rem;
   font-weight:700;
-  /* UPDATED: Changed from gradient to primary blue */
+  /* Button is now fully blue */
   background: var(--primary); 
   color:white;
   cursor:pointer;
@@ -120,13 +119,10 @@ button{
 button:hover:not(:disabled){
   transform:translateY(-3px);
   box-shadow:0 12px 30px rgba(0,86,179,0.3);
-  /* Optional: slightly darker blue on hover */
-  background: #004494; 
 }
 
 button:disabled{
   opacity:0.6;
-  background: var(--primary); /* Maintain blue base even when disabled */
 }
 
 .loader{
@@ -263,8 +259,8 @@ Register your child for our specialized online STEM programs. Select your prefer
 <select name="intakePeriod" id="intakePeriod">
 <option value="">Select Session</option>
 <option value="April Holiday Intake">April Holiday Intake</option>
-<option value="August Intake">August  Intake</option>
-  <option value="November/December Intake">November/December Intake</option>
+<option value="August Intake">August Intake</option>
+<option value="November/December Intake">November/December Intake</option>
 </select>
 <span class="error-message" id="intakePeriodError"></span>
 </div>
@@ -275,7 +271,7 @@ Register your child for our specialized online STEM programs. Select your prefer
 <option value="">Choose Program</option>
 <option>Coding for Kids</option>
 <option>AI for Kids</option>
-<option>Robotics </option>
+<option>Robotics</option>
 <option>Web Development for Juniors</option>
 </select>
 <span class="error-message" id="courseSelectionError"></span>
@@ -342,7 +338,7 @@ Register your child for our specialized online STEM programs. Select your prefer
 Contact: <strong>info@tsi.ac.ke</strong>
 </p>
 
-<button class="back-btn" onclick="location.reload()" style="background: var(--primary);">Back</button>
+<button class="back-btn" onclick="location.reload()">Back</button>
 
 </div>
 
