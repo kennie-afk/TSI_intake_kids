@@ -44,11 +44,7 @@ body{
 h1{
   font-size:2.6rem;
   margin-bottom:12px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip: text;
-  color: transparent; 
+  color: #1a1a1a; /* Base color for potential fallback */
 }
 
 .description{
@@ -114,7 +110,8 @@ button{
   border-radius:16px;
   font-size:1.05rem;
   font-weight:700;
-  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
+  /* UPDATED: Changed from gradient to primary blue */
+  background: var(--primary); 
   color:white;
   cursor:pointer;
   transition:0.3s;
@@ -123,10 +120,13 @@ button{
 button:hover:not(:disabled){
   transform:translateY(-3px);
   box-shadow:0 12px 30px rgba(0,86,179,0.3);
+  /* Optional: slightly darker blue on hover */
+  background: #004494; 
 }
 
 button:disabled{
   opacity:0.6;
+  background: var(--primary); /* Maintain blue base even when disabled */
 }
 
 .loader{
@@ -186,7 +186,11 @@ button:disabled{
 
 <div id="formBody">
 
-<h1>Techsavanna Software Institute</h1>
+<h1>
+  <span style="color: var(--primary);">Techsavanna</span> 
+  <span style="color: var(--secondary);">Software</span> 
+  <span style="color: var(--tertiary);">Institute</span>
+</h1>
 
 <p class="description">
 Register your child for our specialized online STEM programs. Select your preferred intake below.
@@ -338,7 +342,7 @@ Register your child for our specialized online STEM programs. Select your prefer
 Contact: <strong>info@tsi.ac.ke</strong>
 </p>
 
-<button class="back-btn" onclick="location.reload()">Back</button>
+<button class="back-btn" onclick="location.reload()" style="background: var(--primary);">Back</button>
 
 </div>
 
