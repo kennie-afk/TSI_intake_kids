@@ -10,337 +10,301 @@
 
 <style>
 :root{
-  --primary:#0056b3; 
-  --secondary:#ffd700; 
-  --tertiary:#ef4444; 
-  --success:#22c55e;
+  --primary:#7c3aed; 
+  --secondary:#4f46e5; 
+  --success:#22c55e; 
   --danger:#ef4444;
-  --bg:#ffffff;
-  --glass:rgba(0, 86, 179, 0.03);
-  --border:rgba(0, 86, 179, 0.12);
+  --bg:#ffffff; 
+  --glass:rgba(255,255,255,0.06); 
+  --border:rgba(0,0,0,0.12);
+  --tsi-purple: #7c3aed; 
+  --tsi-gold: #ffd700;
 }
 
 *{box-sizing:border-box;}
 
 body{
-  margin:0;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  background:var(--bg);
-  color:#1a1a1a;
+  margin:0; 
+  font-family:'Plus Jakarta Sans',sans-serif; 
+  background:white; 
   padding:40px 15px;
 }
 
 .container{
-  max-width:800px;
-  margin:auto;
-  padding:50px;
-  border-radius:28px;
-  background:var(--glass);
-  backdrop-filter:blur(25px);
-  border:1px solid var(--border);
-  box-shadow:0 30px 70px rgba(0,0,0,0.05);
+  max-width:700px; /* Slimmer max-width for stacked layout */
+  margin:auto; 
+  padding:50px; 
+  border-radius:28px; 
+  background:rgba(255,255,255,0.06); 
+  backdrop-filter:blur(25px); 
+  border:1px solid var(--border); 
+  box-shadow:0 30px 70px rgba(0,0,0,0.6);
 }
 
 h1{
-  font-size:2.6rem;
-  margin-bottom:12px;
+  font-size: 2.6rem; 
+  margin-bottom: 12px; 
+  text-align: center; 
+  font-weight: 800;
+  color: #000;
 }
 
+.tsi-title-main { color: var(--tsi-purple); }
+.tsi-title-sub { color: var(--tsi-gold); }
+.tsi-title-end { color: var(--danger); }
+
 .description{
-  color:#444;
-  margin-bottom:40px;
-  border-bottom:1px solid var(--border);
+  color:#000; 
+  margin-bottom:40px; 
+  border-bottom:1px solid var(--border); 
   padding-bottom:25px;
-  font-weight:500;
+  text-align: center;
 }
 
 section{margin-bottom:40px;}
 
 h3{
-  font-size:0.85rem;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  color:var(--primary);
+  font-size:0.85rem; 
+  text-transform:uppercase; 
+  letter-spacing:2px; 
+  color:var(--primary); 
   margin-bottom:20px;
-  font-weight:700;
 }
 
 .form-group{margin-bottom:22px;}
 
 label{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:0.85rem;
-  margin-bottom:8px;
-  font-weight:600;
+  display:flex; 
+  align-items:center; 
+  gap:8px; 
+  font-size:0.85rem; 
+  margin-bottom:8px; 
+  color:#000;
+  font-weight: 600;
 }
 
-input,select{
-  width:100%;
-  padding:15px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,0.8);
-  font-size:0.95rem;
+input,select,textarea{
+  width:100%; 
+  padding:15px; 
+  border-radius:14px; 
+  border:1px solid var(--border); 
+  background:rgba(0,0,0,0.45); 
+  color:#fff; 
+  font-size:0.95rem; 
   transition:0.3s;
 }
 
-input:focus,select:focus{
-  outline:none;
-  border-color:var(--primary);
-  background:#fff;
-  box-shadow:0 0 0 4px rgba(0,86,179,0.1);
+input::placeholder { color: rgba(255,255,255,0.6); }
+
+input:focus,select:focus,textarea:focus{
+  outline:none; 
+  border-color:var(--primary); 
+  background:rgba(0,0,0,0.65);
+}
+
+.error-message{
+  font-size:0.75rem; 
+  color:var(--danger); 
+  margin-top:6px; 
+  display:block;
 }
 
 .radio-option{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:14px;
-  background:rgba(0,86,179,0.05);
-  border-radius:12px;
+  display:flex; 
+  align-items:center; 
+  gap:12px; 
+  padding:15px;
+  background: #f8fafc; 
+  border: 1px solid #e2e8f0;
+  border-radius: 12px; 
+  margin-bottom: 12px; 
+  cursor: pointer;
 }
 
+.radio-option span{ color: #0f172a; font-weight: 500; }
+.radio-option input[type="checkbox"] { width: auto; margin: 0; }
+
 button{
-  width:100%;
-  padding:18px;
-  border:none;
-  border-radius:16px;
-  font-size:1.05rem;
-  font-weight:700;
-  /* Button is now fully blue as requested */
-  background: var(--primary); 
-  color:white;
-  cursor:pointer;
+  width:100%; 
+  padding:18px; 
+  border:none; 
+  border-radius:16px; 
+  font-size:1.05rem; 
+  font-weight:700; 
+  background:linear-gradient(90deg,var(--primary),var(--secondary)); 
+  color:white; 
+  cursor:pointer; 
   transition:0.3s;
 }
 
 button:hover:not(:disabled){
-  transform:translateY(-3px);
-  box-shadow:0 12px 30px rgba(0,86,179,0.3);
-}
-
-button:disabled{
-  opacity:0.6;
+  transform:translateY(-3px); 
+  box-shadow:0 12px 30px rgba(124,58,237,0.5);
 }
 
 .loader{
-  display:none;
-  border:3px solid #fff;
-  border-top:3px solid transparent;
-  border-radius:50%;
-  width:22px;
-  height:22px;
-  margin:auto;
-  animation:spin 1s linear infinite;
+  display:none; border:3px solid #fff; border-top:3px solid transparent;
+  border-radius:50%; width:22px; height:22px; margin:auto; animation:spin 1s linear infinite;
 }
 
-@keyframes spin{
-  100%{transform:rotate(360deg);}
+@keyframes spin{ 100%{transform:rotate(360deg);} }
+
+#success{ display: none; text-align: center; }
+
+.success-icon-container {
+  margin-bottom: 25px;
 }
 
-#success{display:none;text-align:center;}
+#success p{color:#64748b; font-size:1.1rem;}
 
-.success-icon{
-  margin-bottom:15px;
-}
-
-.info-box{
-  margin-top:20px;
-  padding:20px;
-  border-radius:14px;
-  background:rgba(0,86,179,0.05);
-  border:1px solid var(--border);
-  text-align:left;
+.info-box {
+  margin-top: 25px; 
+  padding: 25px; 
+  border-radius: 16px;
+  background: #f8fafc; 
+  border: 1px solid #e2e8f0; 
+  text-align: left;
 }
 
-.info-row{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:10px;
-}
-
-.back-btn{
-  margin-top:25px;
-  padding:12px 35px;
-}
-.error-message {
-  color: #ef4444;
-  font-size: 0.8rem;
-  margin-top:5px;
-  display:block;
-}
+.info-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; color: #475569; }
 </style>
 </head>
 
 <body>
 
 <div class="container">
-
 <div id="formBody">
 
-<h1>
-  <span style="color: var(--primary);">Techsavanna</span> 
-  <span style="color: var(--secondary);">Software</span> 
-  <span style="color: var(--tertiary);">Institute</span>
-</h1>
+  <h1>
+    <span class="tsi-title-main">Techsavanna</span> 
+    <span class="tsi-title-sub">Software</span> 
+    <span class="tsi-title-end">Institute</span>
+  </h1>
 
-<p class="description">
-Register your child for our specialized online STEM programs. Select your preferred intake below.
-</p>
+  <p class="description">Register your child for our specialized online STEM programs. Select your preferred intake below.</p>
 
-<form id="mainForm">
+  <form id="mainForm">
+    <section>
+      <h3>Guardian & Student Info</h3>
+      
+      <div class="form-group">
+        <label><i data-lucide="user"></i> Parent Name</label>
+        <input type="text" name="parentName" id="parentName" placeholder="Enter parent's full name">
+        <span class="error-message" id="parentNameError"></span>
+      </div>
 
-<section>
-<h3>Guardian & Student Info</h3>
+      <div class="form-group">
+        <label><i data-lucide="mail"></i> Email Address</label>
+        <input type="email" name="email" id="email" placeholder="example@mail.com">
+        <span class="error-message" id="emailError"></span>
+      </div>
 
-<div class="form-group">
-<label><i data-lucide="user"></i> Parent Name</label>
-<input type="text" name="parentName" id="parentName" placeholder="Enter parent's full name">
-<span class="error-message" id="parentNameError"></span>
-</div>
+      <div class="form-group">
+        <label><i data-lucide="phone"></i> WhatsApp Number</label>
+        <input type="tel" name="phone" id="phone" placeholder="Include country code">
+        <span class="error-message" id="phoneError"></span>
+      </div>
 
-<div class="form-group">
-<label><i data-lucide="mail"></i> Email</label>
-<input type="email" name="email" id="email" placeholder="example@mail.com">
-<span class="error-message" id="emailError"></span>
-</div>
+      <div class="form-group">
+        <label><i data-lucide="user-2"></i> Student Name</label>
+        <input type="text" name="studentName" id="studentName" placeholder="Enter child's full name">
+        <span class="error-message" id="studentNameError"></span>
+      </div>
 
-<div class="form-group">
-<label><i data-lucide="phone"></i> WhatsApp</label>
-<input type="tel" name="phone" id="phone" placeholder="Include country code">
-<span class="error-message" id="phoneError"></span>
-</div>
+      <div class="form-group">
+        <label><i data-lucide="users"></i> Age Group</label>
+        <select name="ageGroup" id="ageGroup">
+          <option value="">Select Age Group</option>
+          <option>Ages 5-7</option>
+          <option>Ages 8-12</option>
+          <option>Ages 13+</option>
+        </select>
+        <span class="error-message" id="ageGroupError"></span>
+      </div>
+    </section>
 
-<div class="form-group">
-<label><i data-lucide="user"></i> Student Name</label>
-<input type="text" name="studentName" id="studentName" placeholder="Enter child's full name">
-<span class="error-message" id="studentNameError"></span>
-</div>
+    <section>
+      <h3>Enrollment Selection</h3>
+      
+      <div class="form-group">
+        <label><i data-lucide="calendar"></i> Preferred Intake</label>
+        <select name="intakePeriod" id="intakePeriod">
+          <option value="">Select Session</option>
+          <option value="April Holiday Intake">April Holiday Intake</option>
+          <option value="August Intake">August Intake</option>
+          <option value="November/December Intake">November/December Intake</option>
+        </select>
+        <span class="error-message" id="intakePeriodError"></span>
+      </div>
 
-<div class="form-group">
-<label><i data-lucide="users"></i> Age Group</label>
-<select name="ageGroup" id="ageGroup">
-<option value="">Select Age Group</option>
-<option>Ages 5-7</option>
-<option>Ages 8-12</option>
-<option>Ages 13+</option>
-</select>
-<span class="error-message" id="ageGroupError"></span>
-</div>
-</section>
+      <div class="form-group">
+        <label><i data-lucide="book-open"></i> Course Path</label>
+        <select name="courseSelection" id="courseSelection">
+          <option value="">Choose Program</option>
+          <option>Coding for Kids</option>
+          <option>AI for Kids</option>
+          <option>Robotics</option>
+          <option>Web Development for Juniors</option>
+        </select>
+        <span class="error-message" id="courseSelectionError"></span>
+      </div>
 
-<section>
-<h3>Awareness</h3>
+      <div class="form-group">
+        <label><i data-lucide="layers"></i> Target Level</label>
+        <select name="intakeLevel" id="intakeLevel">
+          <option value="">Select Level</option>
+          <option>Level 1 (Beginner)</option>
+          <option>Level 2 (Intermediate)</option>
+          <option>Level 3 (Advanced)</option>
+        </select>
+        <span class="error-message" id="intakeLevelError"></span>
+      </div>
+    </section>
 
-<div class="form-group">
-<label><i data-lucide="search"></i> How did you hear about TSI?</label>
-<select name="referralSource" id="referralSource">
-  <option value="">Select source</option>
-  <option>Walk-In</option>
-  <option>WhatsApp Status/Group</option>
-  <option>Social Media (Tiktok/Instagram/Facebook)</option>
-  <option>Referral from a Friend</option>
-  <option>Physical Poster/Flyer</option>
-  <option>Other</option>
-</select>
-<span class="error-message" id="referralSourceError"></span>
-</div>
-</section>
+    <section>
+      <h3>Awareness & Confirmation</h3>
+      
+      <div class="form-group">
+        <label><i data-lucide="search"></i> How did you hear about TSI?</label>
+        <select name="referralSource" id="referralSource">
+          <option value="">Select source</option>
+          <option>Walk-In</option>
+          <option>WhatsApp Status/Group</option>
+          <option>Social Media</option>
+          <option>Referral from a Friend</option>
+          <option>Physical Poster/Flyer</option>
+          <option>Other</option>
+        </select>
+        <span class="error-message" id="referralSourceError"></span>
+      </div>
 
-<section>
-<h3>Enrollment Selection</h3>
+      <div class="radio-option" onclick="document.getElementById('commitment').click()">
+        <input type="checkbox" name="commitment" id="commitment" onclick="event.stopPropagation()">
+        <span>I confirm I have a computer and stable internet.</span>
+      </div>
+      <span class="error-message" id="commitmentError"></span>
+    </section>
 
-<div class="form-group">
-<label><i data-lucide="calendar"></i> Preferred Intake</label>
-<select name="intakePeriod" id="intakePeriod">
-<option value="">Select Session</option>
-<option value="April Holiday Intake">April Holiday Intake</option>
-<option value="August Intake">August Intake</option>
-<option value="November/December Intake">November/December Intake</option>
-</select>
-<span class="error-message" id="intakePeriodError"></span>
-</div>
-
-<div class="form-group">
-<label><i data-lucide="book-open"></i> Course Path</label>
-<select name="courseSelection" id="courseSelection">
-<option value="">Choose Program</option>
-<option>Coding for Kids</option>
-<option>AI for Kids</option>
-<option>Robotics</option>
-<option>Web Development for Juniors</option>
-</select>
-<span class="error-message" id="courseSelectionError"></span>
-</div>
-
-<div class="form-group">
-<label><i data-lucide="layers"></i> Target Level</label>
-<select name="intakeLevel" id="intakeLevel">
-<option value="">Select Level</option>
-<option>Level 1 (Beginner)</option>
-<option>Level 2 (Intermediate)</option>
-<option>Level 3 (Advanced)</option>
-</select>
-<span class="error-message" id="intakeLevelError"></span>
-</div>
-</section>
-
-<section>
-<div class="radio-option">
-<input type="checkbox" name="commitment" id="commitment">
-<span>I confirm I have a computer and stable internet.</span>
-</div>
-<span class="error-message" id="commitmentError"></span>
-</section>
-
-<button type="submit" id="submitBtn">
-<span id="btnText">Submit Registration</span>
-<div class="loader" id="loader"></div>
-</button>
-
-</form>
+    <button type="submit" id="submitBtn">
+      <span id="btnText">Submit Registration</span>
+      <div class="loader" id="loader"></div>
+    </button>
+  </form>
 </div>
 
 <div id="success">
-
-<div class="success-icon">
-<i data-lucide="check-circle" style="color:#22c55e; width:70px; height:70px;"></i>
+  <div class="success-icon-container">
+    <i data-lucide="check-circle" style="color: var(--success); width: 80px; height: 80px; stroke-width: 1.5;"></i>
+  </div>
+  <h1 style="margin-top: 0;">Registration Successful</h1>
+  <p>Thank you for choosing Techsavanna Software Institute.</p>
+  <div class="info-box">
+    <div class="info-row"><i data-lucide="mail"></i> <span>Confirmation email will be sent shortly</span></div>
+    <div class="info-row"><i data-lucide="message-circle"></i> <span>Our team will contact you via WhatsApp</span></div>
+    <div class="info-row"><i data-lucide="check-square"></i> <span>Onboarding details will follow</span></div>
+  </div>
+  <button onclick="location.reload()" style="margin-top:30px; width:auto; padding:12px 50px;">Return Home</button>
 </div>
-
-<h1>Registration Successful</h1>
-
-<p>Thank you for registering with Techsavanna Software Institute.</p>
-
-<div class="info-box">
-
-<div class="info-row">
-<i data-lucide="mail"></i>
-<span>Confirmation email will be sent shortly</span>
-</div>
-
-<div class="info-row">
-<i data-lucide="message-circle"></i>
-<span>Our team will contact you via WhatsApp</span>
-</div>
-
-<div class="info-row">
-<i data-lucide="check-square"></i>
-<span>Onboarding details for your chosen session will follow</span>
-</div>
-
-</div>
-
-<p style="margin-top:15px;">
-Contact: <strong>info@tsi.ac.ke</strong>
-</p>
-
-<button class="back-btn" onclick="location.reload()">Back</button>
-
-</div>
-
 </div>
 
 <script>
@@ -352,87 +316,50 @@ const btnText = document.getElementById('btnText');
 
 form.addEventListener('submit', async function(e){
   e.preventDefault();
-
   document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
 
   let valid = true;
 
-  if(!form.parentName.value.trim()){
-    document.getElementById('parentNameError').textContent = "Parent Name is required";
-    valid = false;
-  }
-
+  if(!form.parentName.value.trim()){ document.getElementById('parentNameError').textContent = "Parent Name is required"; valid = false; }
+  
   const emailVal = form.email.value.trim();
-  if(!emailVal){
-    document.getElementById('emailError').textContent = "Email is required";
-    valid = false;
-  } else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)){
-    document.getElementById('emailError').textContent = "Enter a valid email";
-    valid = false;
-  }
+  if(!emailVal){ document.getElementById('emailError').textContent = "Email is required"; valid = false; } 
+  else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)){ document.getElementById('emailError').textContent = "Enter a valid email"; valid = false; }
 
-  if(!form.phone.value.trim()){
-    document.getElementById('phoneError').textContent = "Phone number is required";
-    valid = false;
-  }
-
-  if(!form.studentName.value.trim()){
-    document.getElementById('studentNameError').textContent = "Student Name is required";
-    valid = false;
-  }
-
-  if(!form.ageGroup.value){
-    document.getElementById('ageGroupError').textContent = "Select an Age Group";
-    valid = false;
-  }
-
-  if(!form.referralSource.value){
-    document.getElementById('referralSourceError').textContent = "Select a source";
-    valid = false;
-  }
-
-  if(!form.intakePeriod.value){
-    document.getElementById('intakePeriodError').textContent = "Select an Intake Session";
-    valid = false;
-  }
-
-  if(!form.courseSelection.value){
-    document.getElementById('courseSelectionError').textContent = "Select a Course";
-    valid = false;
-  }
-
-  if(!form.intakeLevel.value){
-    document.getElementById('intakeLevelError').textContent = "Select a Level";
-    valid = false;
-  }
-
-  if(!form.commitment.checked){
-    document.getElementById('commitmentError').textContent = "You must confirm you have a computer and stable internet";
-    valid = false;
-  }
+  if(!form.phone.value.trim()){ document.getElementById('phoneError').textContent = "Phone number is required"; valid = false; }
+  if(!form.studentName.value.trim()){ document.getElementById('studentNameError').textContent = "Student Name is required"; valid = false; }
+  if(!form.ageGroup.value){ document.getElementById('ageGroupError').textContent = "Select an Age Group"; valid = false; }
+  if(!form.referralSource.value){ document.getElementById('referralSourceError').textContent = "Select a source"; valid = false; }
+  if(!form.intakePeriod.value){ document.getElementById('intakePeriodError').textContent = "Select an Intake Session"; valid = false; }
+  if(!form.courseSelection.value){ document.getElementById('courseSelectionError').textContent = "Select a Course"; valid = false; }
+  if(!form.intakeLevel.value){ document.getElementById('intakeLevelError').textContent = "Select a Level"; valid = false; }
+  if(!form.commitment.checked){ document.getElementById('commitmentError').textContent = "Confirmation required"; valid = false; }
 
   if(!valid) return;
 
   loader.style.display='inline-block';
   btnText.style.display='none';
 
-  const formData = new FormData(form);
-  const data = new URLSearchParams(formData);
+  try {
+    const res = await fetch('https://script.google.com/macros/s/AKfycbwHpp54THn5WSmBE7lOWTHgYXDteBkoT02Xg79LenFo-XswqZSk8bB2spqxGW_NYPVL/exec', {
+      method:'POST',
+      body: new URLSearchParams(new FormData(form))
+    });
 
-  const res = await fetch('https://script.google.com/macros/s/AKfycbwHpp54THn5WSmBE7lOWTHgYXDteBkoT02Xg79LenFo-XswqZSk8bB2spqxGW_NYPVL/exec', {
-    method:'POST',
-    body:data
-  });
+    const text = await res.text();
+    loader.style.display='none';
 
-  const text = await res.text();
-
-  loader.style.display='none';
-
-  if(text === "Success"){
-    document.getElementById('formBody').style.display='none';
-    document.getElementById('success').style.display='block';
-  } else {
-    alert("Error submitting form");
+    if(text === "Success"){
+      document.getElementById('formBody').style.display='none';
+      document.getElementById('success').style.display='block';
+      lucide.createIcons();
+    } else {
+      alert("Error submitting form");
+      btnText.style.display='inline';
+    }
+  } catch (e) {
+    alert("Network error");
+    loader.style.display='none';
     btnText.style.display='inline';
   }
 });
